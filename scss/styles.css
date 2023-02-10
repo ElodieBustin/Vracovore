@@ -1,1 +1,14 @@
-/* No CSS *//*# sourceMappingURL=styles.css.map */
+.page .first-block {
+  background-image: url("/assets/images/vracovore-client-remplissage.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: auto;
+  height: 100vh;
+}
+
+@media (min-width: 700px) {
+  .page .first-block {
+    background-image: url("/assets/images/vacovore-background.jpg");
+  }
+}
+/*# sourceMappingURL=styles.css.map */

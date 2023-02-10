@@ -1,0 +1,14 @@
+.page{
+    .first-block{
+        background-image: url('/assets/images/vracovore-client-remplissage.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: auto;
+        height: 100vh;
+
+        @include breakpoint-up(desktop){
+            background-image: url('/assets/images/vacovore-background.jpg');
+        }
+    }
+
+}

@@ -1,8 +1,10 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AEAA,AACI,KADC,CACD,YAAY,CAAA;EACR,gBAAgB,EAAE,sDAAsD;EACxE,eAAe,EAAE,KAAK;EACtB,iBAAiB,EAAE,SAAS;EAC5B,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,KAAK;CAKhB;;ADHD,MAAM,EAAE,SAAS,EAAE,KAAK;ECR5B,AACI,KADC,CACD,YAAY,CAAA;IAQJ,gBAAgB,EAAE,6CAA6C;GAEtE",
     "sources": [
-        "styles.scss"
+        "styles.scss",
+        "_mixins.scss",
+        "_main.scss"
     ],
     "names": [],
     "file": "styles.css"
