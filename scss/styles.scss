@@ -1,2 +1,17 @@
 @import 'mixins';
 @import 'main';
+@import 'nav';
+
+:root{
+    font-size: 10px;
+}
+
+.hide-for-mobile{
+    display: none;
+}
+
+.hide-for-desktop{
+    @include breakpoint-up(desktop){
+        display: none;
+    }
+}

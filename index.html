@@ -13,18 +13,28 @@
 </head>
 <body>
     <!-- Barre de navigation -->
-    <nav>
+    <nav class="navigation">
 
         <div class="navigation__logo">
             <img src="/assets/images/Vracovore.gif" alt="">
         </div>
-        <div class="navigation__menu">
-            <span class="navigation__menu--item">Accueil</span>
-            <span class="navigation__menu--item">Concept</span>
-            <span class="navigation__menu--item">Produits</span>
-            <span class="navigation__menu--item">Recettes</span>
-            <span class="navigation__menu--item">Connexion</span>
+
+
+        <a id="btnHamburger" href="#" class="navigation__toggle hide-for-desktop">
+            <span></span>
+            <span></span>
+            <span></span>
+        </a>
+
+        <div class="navigation__links hide-for-mobile">
+            <a href="">Accueil</a>
+            <a href="">Concept</a>
+            <a href="">Produits</a>
+            <a href="">Recettes</a>
+            <a href="">Connexion</a>
         </div>
+        
+        <!-- <div class="overlay"></div> -->
 
     </nav>
 
@@ -65,5 +75,8 @@
         <div class="img"></div>
     </div>
 </footer>
+
+<script src="/script.js"></script>
+
 </body>
 </html>
