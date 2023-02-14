@@ -1,0 +1,42 @@
+// Pour menu burger
+@keyframes entry {
+	0% {
+        visibility: hidden;
+		opacity: 0;
+	}
+
+    1%{
+        visibility: visible;
+        opacity: 0;
+    }
+
+	100% {
+        visibility: visible;
+		opacity: 1;
+	}
+}
+
+.entry{
+    animation: entry 800ms ease-in-out 0s 1 normal forwards;
+}
+
+@keyframes exit {
+	0% {
+        visibility: visible;
+		opacity: 1;
+	}
+
+    99%{
+        visibility: visible;
+        opacity: 0;
+    }
+
+	100% {
+        visibility: hidden;
+		opacity: 0;
+	}
+}
+
+.exit{
+    animation: exit 800ms ease-in-out 200ms 1 normal forwards;
+}

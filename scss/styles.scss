@@ -1,4 +1,5 @@
 @import 'mixins';
+@import 'animations';
 @import 'main';
 @import 'nav';
 
@@ -14,4 +15,14 @@
     @include breakpoint-up(desktop){
         display: none;
     }
+}
+
+.off{
+    visibility: hidden;
+    
+}
+
+a{
+    text-decoration: none;
+    color: black;
 }

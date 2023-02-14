@@ -1,29 +1,21 @@
 const btnHamburger = document.querySelector('#btnHamburger');
-const body = document.querySelector('body');
 const navigation = document.querySelector('.navigation');
-const fadeElems = document.querySelectorAll('.has-fade');
+const menuBurger = document.querySelector('.navigation__burger--menu');
 
 btnHamburger.addEventListener('click', function(){
-  console.log('click hamburger');
 
   if(navigation.classList.contains('open')){ // Close Hamburger Menu
-    body.classList.remove('noscroll');
-    navigation.classList.remove('open');    
-    fadeElems.forEach(function(element){
-      element.classList.remove('fade-in');
-      element.classList.add('fade-out');
-    });
-    
+    navigation.classList.remove('open');
+    menuBurger.classList.remove('entry');
+    menuBurger.classList.add('exit');
+
   }
   else { // Open Hamburger Menu
-    body.classList.add('noscroll');
     navigation.classList.add('open');
-    fadeElems.forEach(function(element){
-      element.classList.remove('fade-out');
-      element.classList.add('fade-in');
-    });
-
+    menuBurger.classList.add('entry');
+    menuBurger.classList.remove('exit');
+    menuBurger.classList.remove('off');
   }  
 });
 
-console.log('coucou');
+console.log(menuBurger);
