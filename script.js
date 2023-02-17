@@ -17,5 +17,3 @@ btnHamburger.addEventListener('click', function(){
     menuBurger.classList.remove('off');
   }  
 });
-
-console.log(menuBurger);
