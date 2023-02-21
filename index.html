@@ -9,6 +9,8 @@
 
     <link rel="stylesheet" href="/scss/reset.css">
     <link rel="stylesheet" href="/scss/styles.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
@@ -54,7 +56,33 @@
             </div>
         </div>
     
-        <div class="carousel"></div>
+        <div class="carousel">
+            <button class="carousel__button carousel__button--left">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <div class="carousel__track-container">
+                <ul class="carousel__track">
+                    <li class="carousel__slide current-slide">
+                        <img class="carousel__images" src="./assets/images/vracovore_carousel1.png" alt="">
+                    </li>
+                    <li class="carousel__slide">
+                        <img class="carousel__images" src="./assets/images/vracovore_carousel2.png" alt="">
+                    </li>
+                    <li class="carousel__slide">
+                        <img class="carousel__images" src="./assets/images/vracovore_carousel3.png" alt="">
+                    </li>
+                </ul>
+            </div>
+            <button class="carousel__button carousel__button--right">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <div class="carousel__nav">
+                <button class="carousel__indicator current-slide"></button>
+                <button class="carousel__indicator"></button>
+                <button class="carousel__indicator"></button>
+            </div>
+        </div>
     
         <div class="magPictures"></div>
 
