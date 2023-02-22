@@ -354,6 +354,14 @@
   visibility: hidden;
 }
 
+.magPictures {
+  margin-bottom: 1.5rem;
+}
+
+.magPictures > img {
+  width: 100%;
+}
+
 a {
   text-decoration: none;
   color: black;
