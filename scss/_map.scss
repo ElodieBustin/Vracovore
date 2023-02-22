@@ -1,0 +1,28 @@
+.info{
+    display: flex;
+    flex-direction: column;
+
+
+    &__where{
+        font-size: 2rem;
+        margin: 0 auto 1rem auto;
+    }
+
+    &__imgMap{
+        width: fit-content;
+        margin: auto;
+    }
+
+    &__open{
+        font-size: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin: 1.5rem auto;
+        line-height: 3rem;
+
+        > p {
+            font-weight: 500;
+        }
+    }
+}
