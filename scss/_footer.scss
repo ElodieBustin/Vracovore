@@ -1,0 +1,64 @@
+.footer{
+    background: linear-gradient(to right, rgb(0, 164, 228), rgb(88, 246, 140));
+    height: 15rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    color: white;
+
+    &__blockRubrique{
+        display: flex;
+        padding: 1rem;
+
+        &--rubrique{
+            display: flex;
+            flex-direction: column;
+            margin-right: 1rem;
+
+            & p:first-child{
+                font-size: 1.5rem;
+                font-weight: 500;
+                text-decoration: underline;
+            }
+
+            > a {
+                color: white;
+                margin-top: 0.8rem;
+            }
+        }
+
+        &--infos{
+            display: flex;
+            flex-direction: column;
+
+            & p:nth-child(1){
+                font-size: 1.5rem;
+                font-weight: 500;
+                text-decoration: underline;
+            }
+
+            > a {
+                color: white;
+                margin-top: 0.8rem;
+            }
+        }
+    }
+
+    &__blockContact{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        font-size: 1.1rem;
+    }
+
+    &__socialMedia{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0.5rem;
+        font-size: 3rem;
+
+        &--icon{
+            margin: 0.8rem;
+        }
+    }
+}

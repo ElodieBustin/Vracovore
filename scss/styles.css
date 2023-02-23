@@ -335,6 +335,97 @@
   font-weight: 500;
 }
 
+.footer {
+  background: -webkit-gradient(linear, left top, right top, from(#00a4e4), to(#58f68c));
+  background: linear-gradient(to right, #00a4e4, #58f68c);
+  height: 15rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2fr 1fr 1fr;
+      grid-template-columns: 2fr 1fr 1fr;
+  color: white;
+}
+
+.footer__blockRubrique {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1rem;
+}
+
+.footer__blockRubrique--rubrique {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-right: 1rem;
+}
+
+.footer__blockRubrique--rubrique p:first-child {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.footer__blockRubrique--rubrique > a {
+  color: white;
+  margin-top: 0.8rem;
+}
+
+.footer__blockRubrique--infos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.footer__blockRubrique--infos p:nth-child(1) {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.footer__blockRubrique--infos > a {
+  color: white;
+  margin-top: 0.8rem;
+}
+
+.footer__blockContact {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  font-size: 1.1rem;
+}
+
+.footer__socialMedia {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0.5rem;
+  font-size: 3rem;
+}
+
+.footer__socialMedia--icon {
+  margin: 0.8rem;
+}
+
 :root {
   font-size: 10px;
   font-family: 'Poppins', sans-serif;
