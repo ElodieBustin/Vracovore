@@ -1,5 +1,5 @@
 .footer{
-    background: linear-gradient(to right, rgb(0, 164, 228), rgb(88, 246, 140));
+    background: linear-gradient(to right, $blue, $green);
     height: 15rem;
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;

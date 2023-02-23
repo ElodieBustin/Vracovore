@@ -426,6 +426,71 @@
   margin: 0.8rem;
 }
 
+.product {
+  width: 85%;
+  margin: 1.5rem auto;
+}
+
+.product__imgContainer > img {
+  width: 100%;
+}
+
+.product__infos {
+  margin: 1rem 0;
+  padding: 1rem 0;
+  position: relative;
+}
+
+.product__infos > span {
+  margin: 1rem 0;
+}
+
+.product__infos--subContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.product__infos--name {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1.8rem;
+}
+
+.product__infos--quantity {
+  margin-right: 3rem;
+}
+
+.product__infos--category {
+  display: inline-block;
+  background-color: #58f68c;
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 0.5rem;
+}
+
+.product__infos--price {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.product__description h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-decoration: underline;
+}
+
+.product__description--text {
+  font-size: 1.2rem;
+}
+
 :root {
   font-size: 10px;
   font-family: 'Poppins', sans-serif;

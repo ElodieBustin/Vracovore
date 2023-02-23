@@ -1,10 +1,12 @@
 @import 'mixins';
+@import 'variables';
 @import 'animations';
 @import 'main';
 @import 'nav';
 @import 'carousel';
 @import 'map';
 @import 'footer';
+@import 'product';
 
 :root{
     font-size: 10px;
