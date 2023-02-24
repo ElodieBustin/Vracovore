@@ -1,0 +1,40 @@
+.listRecipies{
+    display: flex;
+    flex-direction: column;
+    margin: 2rem auto;
+
+    .recipiesCard{
+        width: 30rem;
+        margin: 1.5rem auto;
+
+
+
+        &__imgContainer{
+            width: 100%;
+
+            >img{
+                width: 100%;
+                border-radius: 5%;
+            }
+        }
+
+        &__title{
+            width: 80%;
+            height: 6rem;
+            position: relative;
+            
+            margin: -40px auto 0;
+            background-color: white;
+            border-radius: 5%;
+            box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 5;
+
+            >span{
+                font-size: 1.8rem;
+            }
+        }
+    }
+}
