@@ -1,16 +1,36 @@
 .info{
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+
+    @include breakpoint-up(desktop) {
+        margin: 3.5rem auto;
+        flex-direction: row;
+    }
 
 
     &__where{
         font-size: 2rem;
         margin: 0 auto 1rem auto;
+
+        @include breakpoint-up(desktop) {
+            margin: auto;
+            padding-left: 25rem;
+            width: calc(50% - 25rem);
+        }
     }
 
     &__imgMap{
         width: fit-content;
         margin: auto;
+
+        @include breakpoint-up(desktop) {
+            width: 50%;
+
+            >iframe{
+                width: 500px;
+            }
+        }
     }
 
     &__open{
@@ -21,8 +41,17 @@
         margin: 1.5rem auto;
         line-height: 3rem;
 
+        @include breakpoint-up(desktop) {
+            margin: 3.5rem auto;
+            font-size: 2.5rem;
+        }
+
         > p {
             font-weight: 500;
+
+            @include breakpoint-up(desktop) {
+                margin-bottom: 2rem;
+            }
         }
     }
 }

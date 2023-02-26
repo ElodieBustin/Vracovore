@@ -5,7 +5,7 @@
     margin: 5rem auto;
 
     @include breakpoint-up(desktop){
-        height: 600px;
+        height: 500px;
     }
 
 
@@ -45,14 +45,26 @@
 
         &--left{
             left: -3rem;
+
+            @include breakpoint-up(desktop) {
+                left: -5rem;
+            }
         }
 
         &--right {
             right: -3rem;
+
+            @include breakpoint-up(desktop) {
+                right: -5rem;
+            }
         }
 
         > i {
-            width: 12px;
+            font-size: 1.5rem;
+
+            @include breakpoint-up(desktop) {
+                font-size: 3rem;
+            }
         }
     }
 
