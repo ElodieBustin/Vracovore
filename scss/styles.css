@@ -133,12 +133,29 @@
   width: 8rem;
 }
 
+@media (min-width: 700px) {
+  .navigation__logo {
+    width: 10rem;
+  }
+}
+
 .navigation__logo > img {
   width: 100%;
 }
 
 .navigation__links {
-  display: block;
+  width: 50%;
+  height: 4rem;
+  font-size: 2rem;
+  font-weight: 700;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .navigation__toggle {
@@ -635,8 +652,10 @@
   font-family: 'Poppins', sans-serif;
 }
 
-.hide-for-mobile {
-  display: none;
+@media (max-width: 699px) {
+  .hide-for-mobile {
+    display: none;
+  }
 }
 
 @media (min-width: 700px) {

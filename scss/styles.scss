@@ -16,7 +16,10 @@
 }
 
 .hide-for-mobile{
-    display: none;
+    @include breakpoint-down(mobile){
+        display: none;
+    }
+    
 }
 
 .hide-for-desktop{
