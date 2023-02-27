@@ -2,9 +2,19 @@
     width: 85%;
     margin: 1.5rem auto;
 
+    @include breakpoint-up(desktop){
+        margin: 2rem auto 5rem auto;
+        display: flex;
+        height: 50rem;
+    }
+
     &__imgContainer{
         >img {
             width: 100%;
+        }
+
+        @include breakpoint-up(desktop){
+            margin-right: 2.5rem;
         }
     }
 
@@ -13,6 +23,10 @@
         padding: 1rem 0;
         position: relative;
 
+        @include breakpoint-up(desktop){
+            max-width: 50%;
+        }
+
         > span{
             margin: 1rem 0;
         }
@@ -20,6 +34,10 @@
         &--subContainer{
             display: flex;
             justify-content: space-between;
+
+            @include breakpoint-up(desktop){
+                font-size: 1.2rem;
+            }
         }
 
         &--name{
@@ -47,18 +65,37 @@
             font-size: 1.5rem;
             font-weight: 500;
             text-decoration: underline;
-        }
-    }
 
-    &__description{
-        h2{
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            text-decoration: underline;
+            @include breakpoint-up(desktop){
+                font-size: 1.8rem;
+            }
         }
 
-        &--text{
-            font-size: 1.2rem;
+        &__description{
+
+            @include breakpoint-up(desktop){
+                margin-top: 2.5rem;
+            }
+            h2{
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+                text-decoration: underline;
+
+                @include breakpoint-up(desktop){
+                    font-size: 2.5rem;
+                }
+            }
+    
+            &--text{
+                font-size: 1.2rem;
+
+                @include breakpoint-up(desktop){
+                    font-size: 1.5rem;
+                }
+            }
         }
+        
     }
+
+    
 }
