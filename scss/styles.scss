@@ -15,6 +15,13 @@
     font-family: 'Poppins', sans-serif;
 }
 
+body {
+    @include breakpoint-up(desktop){
+        max-width: 1500px;
+        margin: auto;
+    }
+}
+
 .hide-for-mobile{
     @include breakpoint-down(mobile){
         display: none;

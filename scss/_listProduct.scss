@@ -16,65 +16,92 @@
         margin: auto;
         padding: 1.5rem;
         border: 1px rgb(206, 206, 206) solid;
-        border-radius: 5%;
+        border-radius: 10px;
         box-shadow: 10px 10px 14px -10px rgba(0,0,0,0.75);
+
     
         &__list{
             font-size: 1.3rem;
             & :not(li:last-child){
                 margin-bottom: 0.8rem;
             }
+
+            @include breakpoint-up(desktop){
+                font-size: 1.6rem ;
+            }
         } 
     }
 
-    .productCard{
-        margin-top: 2rem;
-        padding: 1rem;
-        display: block;
-        border: 1px rgb(206, 206, 206) solid;
-        border-radius: 5%;
+    .productsContainer{
 
-        &__name{
-            font-size: 2rem;
-            font-weight: 700;
-        }
-        &__priceKilo{
-            font-size: 0.9rem;
-            margin: 1rem 0;
+        @include breakpoint-up(desktop){
+            display: flex;
+            flex-wrap: wrap;
+            margin: 3rem auto;
+            justify-content: center;
         }
 
-        &__imgContainer{
+        .productCard{
+            margin-top: 2rem;
+            padding: 1rem;
+            display: block;
+            border: 1px rgb(206, 206, 206) solid;
             border-radius: 5%;
-            overflow: hidden;
-            margin-bottom: 1rem;
 
-            >img{
-                width: 100%;
+            @include breakpoint-up(desktop){
+                box-sizing: border-box;
+                width: 40rem;
+                margin: 1rem;
             }
-        }
-
-        &__infos{
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr 1fr;
-
-            & span{
-                margin-bottom: 1rem;
-                font-size: 1.5rem;
-            }
-
-            &--quantity{
-                grid-column: span 2;
-            }
-
-            &--price{
+    
+            &__name{
+                font-size: 2rem;
                 font-weight: 700;
             }
+            &__priceKilo{
+                font-size: 0.9rem;
+                margin: 1rem 0;
 
-            &--category{
-                justify-self: end;
+                @include breakpoint-up(desktop){
+                    font-size: 1.1rem;
+                }
+            }
+    
+            &__imgContainer{
+                border-radius: 5%;
+                overflow: hidden;
+                margin-bottom: 1rem;
+    
+                >img{
+                    width: 100%;
+                }
+            }
+    
+            &__infos{
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr 1fr;
+    
+                & span{
+                    margin-bottom: 1rem;
+                    font-size: 1.5rem;
+                }
+    
+                &--quantity{
+                    grid-column: span 2;
+                }
+    
+                &--price{
+                    font-weight: 700;
+                }
+    
+                &--category{
+                    justify-self: end;
+                }
             }
         }
     }
+
+    
 }
 
