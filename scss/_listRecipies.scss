@@ -3,11 +3,23 @@
     flex-direction: column;
     margin: 2rem auto;
 
+    @include breakpoint-up(desktop){
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 3rem auto;
+        justify-content: center;
+    }
+
     .recipiesCard{
         width: 30rem;
         margin: 1.5rem auto;
 
-
+        @include breakpoint-up(desktop){
+            box-sizing: border-box;
+            width: 40rem;
+            margin: 1rem;
+        }
 
         &__imgContainer{
             width: 100%;
