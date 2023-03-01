@@ -69,7 +69,7 @@
 }
 
 .page .first-block {
-  background-image: url("/assets/images/vracovore-client-remplissage.jpg");
+  background-image: url("./../assets/images/vracovore-client-remplissage.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
@@ -78,7 +78,7 @@
 
 @media (min-width: 700px) {
   .page .first-block {
-    background-image: url("/assets/images/vacovore-background.jpg");
+    background-image: url("./../assets/images/vacovore-background.jpg");
   }
 }
 
