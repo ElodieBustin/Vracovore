@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Header from './Header';
 import Footer from './Footer';
-import Homepage from './utils/Homepage';
+import Homepage from './features/Homepage';
 
 import './scss/reset.css';
 import './scss/styles.css';
