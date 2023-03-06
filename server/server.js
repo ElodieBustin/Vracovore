@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const pool = require('./db');
-const router = require('./router/router');
+const router = require('./router/jwtAuth');
 
 const PORT = process.env.PORT || 3001;
 
@@ -15,7 +15,7 @@ app.use(express.json());
 //ROUTES
 // register and login routes
 
-app.use("/auth", require("./router/jwtAuth"));
+app.use("/", router);
 
 //get all users
 app.get('/', async (req, res) => {

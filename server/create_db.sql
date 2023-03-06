@@ -3,7 +3,7 @@ BEGIN;
 DROP TABLE IF EXISTS "users";
 
 CREATE TABLE IF NOT EXISTS "users" (
-    id SERIAL PRIMARY KEY, 
+    id SERIAL PRIMARY KEY,
     last_name VARCHAR(128),
     first_name VARCHAR(128),
     email VARCHAR(255) UNIQUE,
