@@ -3,7 +3,7 @@ const pool = require('./../db');
 const bcrypt = require('bcrypt');
 const jwtGenerator = require('./../utils/jwtGenerator');
 
-//register
+//register (nom à renseigner plus tard)
 
 router.post('/', async (req, res) => {
 
@@ -39,5 +39,29 @@ router.post('/', async (req, res) => {
       res.status(500).send("Server error");
     }
   });
+
+//login route (nom à renseigner plus tard)
+
+router.post('/login', async (req, res) => {
+    try {
+        const {email, password} = req.body;
+
+        const user = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
+        if(user.rows.length === 0){
+            return res.status(401).json("Aucun compte pour cette adresse mail");
+        }
+
+        const validPassword = await bcrypt.compare(password, user.rows[0].password);
+
+        if(!validPassword){
+            return res.status(401).json("Password or Email incorrect");
+        }
+        const token = jwtGenerator(user.rows[0].id);
+        res.json({token});
+
+    } catch (error) {
+        console.log(error.message)
+    }
+})
 
 module.exports = router;
