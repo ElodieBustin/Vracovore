@@ -3,6 +3,7 @@ const pool = require('./../db');
 const bcrypt = require('bcrypt');
 const jwtGenerator = require('./../utils/jwtGenerator');
 const checkInfos = require('../middlewares/checkInfos');
+const authorization = require('../middlewares/authorization');
 
 //register (nom à renseigner plus tard)
 
@@ -62,6 +63,16 @@ router.post('/login', checkInfos, async (req, res) => {
 
     } catch (error) {
         console.log(error.message)
+    }
+})
+
+router.get('/is-verify', authorization, async (req, res) =>{
+    try {
+
+        res.json(true);
+        
+    } catch (error) {
+        console.log(error.message);
     }
 })
 

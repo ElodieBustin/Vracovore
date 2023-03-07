@@ -3,7 +3,7 @@ require('dotenv').config();
 
 async function authorization(req, res, next){
     try {
-        const jwtToken = req.heander("token");
+        const jwtToken = req.header("token");
         if(!jwtToken){
             return res.status(403).json("Pas autorisé");
         }
@@ -16,6 +16,7 @@ async function authorization(req, res, next){
         console.log(error.message);
         return res.status(403).json("Pas autorisé");
     }
+    next();
 }
 
 module.exports = authorization;
