@@ -2,10 +2,11 @@ const router = require('express').Router();
 const pool = require('./../db');
 const bcrypt = require('bcrypt');
 const jwtGenerator = require('./../utils/jwtGenerator');
+const checkInfos = require('../middlewares/checkInfos');
 
 //register (nom à renseigner plus tard)
 
-router.post('/', async (req, res) => {
+router.post('/', checkInfos, async (req, res) => {
 
     const {last_name, first_name, email, password} = req.body;
 
@@ -42,7 +43,7 @@ router.post('/', async (req, res) => {
 
 //login route (nom à renseigner plus tard)
 
-router.post('/login', async (req, res) => {
+router.post('/login', checkInfos, async (req, res) => {
     try {
         const {email, password} = req.body;
 
