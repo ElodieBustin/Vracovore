@@ -1,4 +1,5 @@
-function ListContainer(){
+function ListProduct(){
+
     return (
 <section className="listContainer">
 
@@ -68,4 +69,4 @@ function ListContainer(){
     );
 };
 
-export default ListContainer;
+export default ListProduct;

@@ -1,6 +1,11 @@
+import Header from "./Header";
+import Footer from "./Footer";
+
 /* eslint-disable jsx-a11y/iframe-has-title */
 function Homepage(){
     return (
+        <>
+        <Header />
         <main className="page">
 
         <div className="first-block">
@@ -39,7 +44,7 @@ function Homepage(){
         </div>
     
         <div className="magPictures">
-            <img src="/assets/images/photos_mag.png" alt="" />
+            <img src={require('./../assets/images/photos_mag.png')} alt="" />
         </div>
 
         <div className="info">
@@ -59,6 +64,9 @@ function Homepage(){
         </div>
 
     </main>
+
+    <Footer />
+    </>
     );
 };
 

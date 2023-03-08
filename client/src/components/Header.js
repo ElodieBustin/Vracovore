@@ -1,8 +1,9 @@
+
 function Header(){
     return (
         <header className="navigation">
         <div className="navigation__logo">
-            <img src={require('./assets/images/Vracovore.gif')} alt="" />
+            <img src={require('./../assets/images/Vracovore.gif')} alt="" />
         </div>
 
         <a id="btnHamburger" href="index.html" className="navigation__toggle hide-for-desktop">
