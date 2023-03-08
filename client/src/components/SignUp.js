@@ -41,57 +41,58 @@ export default class SignUp extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className='connectContainer__form'onSubmit={this.handleSubmit}>
         <h3>Sign Up</h3>
-
-        <div className="mb-3">
-          <label>First name</label>
+      <div className='connectContainer__label'>
+        
+        <div className='connectContainer__label--firstName label'>
+          <label className='labelInput'>First name</label>
           <input
             type="text"
-            className="form-control"
+            className='input'
             placeholder="First name"
             onChange={event=>this.setState({first_name: event.target.value})}
           />
         </div>
 
-        <div className="mb-3">
-          <label>Last name</label>
+        <div className='connectContainer__label--lastName label'>
+          <label className='labelInput'>Last name</label>
           <input 
             type="text" 
-            className="form-control" 
+            className='input'
             placeholder="Last name" 
             onChange={event=>this.setState({last_name: event.target.value})}
             />
         </div>
 
-        <div className="mb-3">
-          <label>Email address</label>
+        <div className='connectContainer__label--email label'>
+          <label className='labelInput'>Email address</label>
           <input
             type="email"
-            className="form-control"
+            className='input'
             placeholder="Enter email"
             onChange={event=>this.setState({email: event.target.value})}
           />
         </div>
 
-        <div className="mb-3">
-          <label>Password</label>
+        <div className='connectContainer__label--password label'>
+          <label className='labelInput'>Password</label>
           <input
             type="password"
-            className="form-control"
+            className='input'
             placeholder="Enter password"
             onChange={event=>this.setState({password: event.target.value})}
           />
         </div>
-
-        <div className="d-grid">
-          <button type="submit" className="btn btn-primary">
+      </div>
+        <div className='connectContainer__submit'>
+          <button type="submit">
             Sign Up
           </button>
         </div>
-        <p className="forgot-password text-right">
+        {/* <p className="forgot-password text-right">
           Already registered <a href="/sign-in">sign in?</a>
-        </p>
+        </p> */}
       </form>
     )
   }

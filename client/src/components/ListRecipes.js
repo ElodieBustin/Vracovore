@@ -1,9 +1,14 @@
+import Header from "./Header";
+import Footer from "./Footer";
+
 function ListRecipies(){
     return (
+        <>
+        <Header />
         <div className="listRecipies">
         <div className="recipiesCard">
             <div className="recipiesCard__imgContainer">
-                <img src="/assets/images/savon.jpg" alt="" />
+            <img src={require("./../assets/images/savon.jpg")} alt="" />
             </div>
     
             <p className="recipiesCard__title">
@@ -13,7 +18,7 @@ function ListRecipies(){
     
         <div className="recipiesCard">
             <div className="recipiesCard__imgContainer">
-                <img src="/assets/images/savon.jpg" alt="" />
+            <img src={require("./../assets/images/savon.jpg")} alt="" />
             </div>
 
             <p className="recipiesCard__title">
@@ -23,7 +28,7 @@ function ListRecipies(){
 
         <div className="recipiesCard">
             <div className="recipiesCard__imgContainer">
-                <img src="/assets/images/savon.jpg" alt="" />
+            <img src={require("./../assets/images/savon.jpg")} alt="" />
             </div>
 
             <p className="recipiesCard__title">
@@ -32,6 +37,8 @@ function ListRecipies(){
         </div>
 
     </div>
+    <Footer />
+    </>
     );
 };
 

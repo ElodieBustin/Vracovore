@@ -3,48 +3,44 @@ import React, { Component } from 'react'
 export default class Login extends Component {
   render() {
     return (
-      <form>
+      <form className='connectContainer__form'>
         <h3>Sign In</h3>
-
-        <div className="mb-3">
-          <label>Email address</label>
-          <input
-            type="email"
-            className="form-control"
-            placeholder="Enter email"
-          />
-        </div>
-
-        <div className="mb-3">
-          <label>Password</label>
-          <input
-            type="password"
-            className="form-control"
-            placeholder="Enter password"
-          />
-        </div>
-
-        <div className="mb-3">
-          <div className="custom-control custom-checkbox">
+        <div className='connectContainer__label'>
+          <div className='connectContainer__label--email label'>
+            <label className='labelInput'>Email address</label>
             <input
-              type="checkbox"
-              className="custom-control-input"
-              id="customCheck1"
+              type="email"
+              className='input'
+              placeholder="Enter email"
             />
-            <label className="custom-control-label" htmlFor="customCheck1">
+          </div>
+        
+          <div className='connectContainer__label--password label'>
+            <label className='labelInput'>Password</label>
+            <input
+              type="password"
+              className='input'
+              placeholder="Enter password"
+            />
+          </div>
+        </div>
+        <div className='connectContainer__container'>
+          <div className='connectContainer__container--label--email'>
+            <input type="checkbox"/>
+            <label>
               Remember me
             </label>
           </div>
         </div>
 
-        <div className="d-grid">
-          <button type="submit" className="btn btn-primary">
+        <div className='connectContainer__submit'>
+          <button type="submit">
             Submit
           </button>
         </div>
-        <p className="forgot-password text-right">
+        {/* <p className="forgot-password text-right">
           Forgot <a href="#">password?</a>
-        </p>
+        </p> */}
       </form>
     )
   }

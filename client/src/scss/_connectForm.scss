@@ -1,0 +1,88 @@
+.connectContainer{
+    width: 80%;
+    padding: 5rem;
+    margin: auto;
+
+    @include breakpoint-up(desktop){
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        
+        min-height: 50vh;
+    }
+
+    &__form{
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+        align-self: center;
+        border-radius: 20px;
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        padding: 3rem;
+        margin-bottom: 2rem;
+        min-height: 50%;
+        min-width: 50%;
+
+        >h3{
+            font-size: 3rem;
+            text-align: center;
+        }
+    }
+
+
+    &__label{
+        margin: 1.5rem 0;
+
+    }
+
+    &__submit{
+        margin-top: 2rem;
+        >button{
+            background-color: $blue;
+            border: none;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+            font-size: 1.6rem;
+            margin: 0.4rem 0.2rem;
+            cursor: pointer;
+            border-radius: 5px;
+            &:hover{
+                background-color: $green;
+            }
+        }
+    }
+}
+
+.label{
+    margin-top: 1.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input{
+    display: block;
+    width: 10rem;
+    font-size: 1.4rem;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    padding: 1rem;
+    margin: 1rem 0;
+    transition: border-bottom-color 0.3s ease-in-out;
+
+    &:focus{
+        outline: none;
+        border-bottom-color: $green;
+    }
+
+    @include breakpoint-up(desktop){
+        width: 50%;
+    }
+}
+
+.labelInput{
+    display: block;
+    font-size: 1.8rem;
+    margin-right: 0.5rem;
+}

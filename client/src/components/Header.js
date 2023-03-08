@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 
 function Header(){
     return (
@@ -6,26 +7,26 @@ function Header(){
             <img src={require('./../assets/images/Vracovore.gif')} alt="" />
         </div>
 
-        <a id="btnHamburger" href="index.html" className="navigation__toggle hide-for-desktop">
+        <a id="btnHamburger" href="/" className="navigation__toggle hide-for-desktop">
             <span></span>
             <span></span>
             <span></span>
         </a>
 
         <nav className="navigation__burger--menu off hide-for-desktop">
-            <a href="index.html">Accueil</a>
-            <a href="concept.html">Concept</a>
-            <a href="listProduct.html">Produits</a>
-            <a href="recettes.html">Recettes</a>
-            <a href="index.html">Connexion</a>
+            <Link to="/">Accueil</Link>
+            <Link to="/concept">Concept</Link>
+            <Link to="/products">Produits</Link>
+            <Link to="/recettes">Recettes</Link>
+            <Link to="/login">Connexion</Link>
         </nav>
 
         <nav className="navigation__links hide-for-mobile">
-            <a href="index.html">Accueil</a>
-            <a href="concept.html">Concept</a>
-            <a href="listProduct.html">Produits</a>
-            <a href="recettes.html">Recettes</a>
-            <a href="index.html">Connexion</a>
+            <Link to="/">Accueil</Link>
+            <Link to="/concept">Concept</Link>
+            <Link to="/products">Produits</Link>
+            <Link to="/recettes">Recettes</Link>
+            <Link to="/login">Connexion</Link>
         </nav>
     </header>
     )
