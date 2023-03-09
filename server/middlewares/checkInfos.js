@@ -1,14 +1,13 @@
 function checkInfos(req, res, next) {
-    const { email, last_name, first_name, password } = req.body;
+    const { last_name, first_name, email, password } = req.body;
   
     function validEmail(userEmail) {
       return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(userEmail);
     }
   
-    if (req.path === "/") { // ! route à créer ?
-      console.log(!email.length);
-      if (![email, last_name, first_name, password].every(Boolean)) {
-        return res.status(401).json("Missing Credentials");
+    if (req.path === "/register") {
+      if (![last_name, first_name, email, password].every(Boolean)) {
+        return res.status(401).json("Pouet");
       } else if (!validEmail(email)) {
         return res.status(401).json("Invalid Email");
       }

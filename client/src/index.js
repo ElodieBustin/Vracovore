@@ -1,19 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
+
 
 import ListProduct from './components/ListProduct';
 import ListRecipies from './components/ListRecipes';
 import Homepage from './components/Homepage';
 import ConnectForm from './components/connectForm';
-// import Dashboard from './components/Dashboard';
+import Dashboard from './components/Dashboard';
 
 import './scss/reset.css';
 import './scss/styles.css';
 
+
 function App(){
+
     return (
-        <>
+        <React.StrictMode>
         <Router>
             <Routes>
                 <Route exact path="/"
@@ -29,15 +32,15 @@ function App(){
                         element={<ListRecipies />}
                 />
                 <Route path='/login'
-                        element={<ConnectForm />}
-                />
-                
+                        element = {<ConnectForm />}
+                         />
+                <Route path="/dashboard"
+                element={<Dashboard />}  
+                /> 
             </Routes>
 
         </Router>
-        
-
-        </>
+        </React.StrictMode>
     )
 };
 

@@ -1,16 +1,16 @@
 import Header from "./Header";
 import Footer from "./Footer";
 import Login from './Login';
-import SignUp from './SignUp';
+import Register from './Register';
 
 
-const ConnectForm = () => {
+const ConnectForm = ({setAuth}) => {
     return (
         <>
         <Header />
         <div className='connectContainer'>
-            <Login />
-            <SignUp />
+            <Login  />
+            <Register />
         </div>
         <Footer />
         </>

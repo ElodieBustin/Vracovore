@@ -9,6 +9,7 @@ async function authorization(req, res, next){
         }
 
         const payload = jwt.verify(jwtToken, process.env.jwtSecret);
+        // console.log('le payload dans authorization est ' + payload.user);
 
         req.user = payload.user;
 

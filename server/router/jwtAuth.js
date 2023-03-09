@@ -5,12 +5,10 @@ const jwtGenerator = require('./../utils/jwtGenerator');
 const checkInfos = require('../middlewares/checkInfos');
 const authorization = require('../middlewares/authorization');
 
-//register (nom à renseigner plus tard)
-
-router.post('/', checkInfos, async (req, res) => {
+//register
+router.post('/register', checkInfos, async (req, res) => {
 
     const {last_name, first_name, email, password} = req.body;
-
 
     try {
       const checkUser = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
@@ -56,7 +54,7 @@ router.post('/login', checkInfos, async (req, res) => {
         const validPassword = await bcrypt.compare(password, user.rows[0].password);
 
         if(!validPassword){
-            return res.status(401).json("Password or Email incorrect");
+            return res.status(401).json("Le mot de passe ou l'email est incorrect");
         }
         const token = jwtGenerator(user.rows[0].id);
         res.json({token});
@@ -68,10 +66,11 @@ router.post('/login', checkInfos, async (req, res) => {
 
 router.get('/is-verify', authorization, async (req, res) =>{
     try {
-
+        console.log("je suis passé par is-verify en true");
         res.json(true);
         
     } catch (error) {
+        console.log("je suis passé par is-verify en false");
         console.log(error.message);
     }
 })
