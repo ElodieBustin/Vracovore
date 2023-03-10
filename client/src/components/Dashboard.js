@@ -1,19 +1,23 @@
 import React, {useEffect, useState} from 'react';
 import {toast} from 'react-toastify';
+import Header from './Header';
+import Footer from './Footer';
+import {Link} from 'react-router-dom';
 
 const Dashboard = ({setAuth}) => {
 
-    const [name, setName] = useState("");
+    const [first_name, setName] = useState("");
 
     const getProfile = async () => {
       try {
         const res = await fetch("http://localhost:3000/dashboard/", {
-          method: "POST",
+          method: "GET",
           headers: { jwt_token: localStorage.token }
         });
   
         const parseData = await res.json();
-        setName(parseData.user_name);
+        console.log(parseData);
+        setName(parseData.first_name);
       } catch (err) {
         console.error(err.message);
       }
@@ -35,15 +39,20 @@ const Dashboard = ({setAuth}) => {
       }, []);
 
     
-      return (
-        <div>
-          <p>Welcome to your Dashboard</p>
+      return (
+      <>
+      <Header />
+      <div>
+        <p>Welcome to your Dashboard</p>
 
-    <h2>Welcome {name}</h2>
-      <button onClick={e => logout(e)}>
-        Logout
+        <h2>Welcome {first_name}</h2>
+        
+      <button onClick={e => logout(e)} >
+      <Link to='/' >Logout</Link>
       </button>
-        </div>
-      );
+    </div>
+    <Footer />
+  </>
+      );
     };
     export default Dashboard;

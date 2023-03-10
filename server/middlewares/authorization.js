@@ -1,23 +1,25 @@
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
-async function authorization(req, res, next){
-    try {
-        const jwtToken = req.header("token");
-        if(!jwtToken){
-            return res.status(403).json("Pas autorisé");
-        }
+//this middleware will on continue on if the token is inside the local storage
 
-        const payload = jwt.verify(jwtToken, process.env.jwtSecret);
-        // console.log('le payload dans authorization est ' + payload.user);
+module.exports = function(req, res, next) {
+  // Get token from header
+  const token = req.header("jwt_token");
 
-        req.user = payload.user;
+  // Check if not token
+  if (!token) {
+    return res.status(403).json({ msg: "authorization denied" });
+  }
 
-    } catch (error) {
-        console.log(error.message);
-        return res.status(403).json("Pas autorisé");
-    }
+  // Verify token
+  try {
+    //it is going to give use the user id (user:{id: user.id})
+    const verify = jwt.verify(token, process.env.jwtSecret);
+
+    req.user = verify.user;
     next();
-}
-
-module.exports = authorization;
+  } catch (err) {
+    res.status(401).json({ msg: "Token is not valid" });
+  }
+};

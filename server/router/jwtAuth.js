@@ -1,4 +1,5 @@
-const router = require('express').Router();
+const express = require("express");
+const router = express.Router();
 const pool = require('./../db');
 const bcrypt = require('bcrypt');
 const jwtGenerator = require('./../utils/jwtGenerator');
@@ -60,18 +61,18 @@ router.post('/login', checkInfos, async (req, res) => {
         res.json({token});
 
     } catch (error) {
-        console.log(error.message)
+        console.log(error.message);
+        res.status(500).send('Servor error');
     }
 })
 
-router.get('/is-verify', authorization, async (req, res) =>{
+router.post('/verify', authorization, async (req, res) =>{
     try {
-        console.log("je suis passé par is-verify en true");
         res.json(true);
         
     } catch (error) {
-        console.log("je suis passé par is-verify en false");
         console.log(error.message);
+        res.status(500).send('Servor error');
     }
 })
 

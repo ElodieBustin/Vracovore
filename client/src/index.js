@@ -14,8 +14,37 @@ import './scss/styles.css';
 
 
 function App(){
-
-    return (
+        const checkAuthenticated = async () => {
+                try {
+                  const response = await fetch(
+                        "http://localhost:3001/verify", 
+                        {
+                    method: "POST",
+                    headers: { 
+                        "Content-Type": "application/json",
+            Accept:"application/json",
+            "Access-control-Allow-origin": "*",
+            jwt_token: localStorage.token }
+                  });
+            
+                  const parseRes = await response.json();
+            
+                  parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
+                } catch (err) {
+                  console.error(err.message);
+                }
+              };
+            
+              useEffect(() => {
+                checkAuthenticated();
+              }, []);
+            
+              const [isAuthenticated, setIsAuthenticated] = useState(false);
+            
+              const setAuth = boolean => {
+                setIsAuthenticated(boolean);
+              };
+     return (
         <React.StrictMode>
         <Router>
             <Routes>
@@ -32,10 +61,12 @@ function App(){
                         element={<ListRecipies />}
                 />
                 <Route path='/login'
-                        element = {<ConnectForm />}
+                        element = {
+                                !isAuthenticated ? <ConnectForm setAuth={setAuth}/>
+                                : <Navigate to="/dashboard" />}
                          />
                 <Route path="/dashboard"
-                element={<Dashboard />}  
+                element={<Dashboard setAuth={setAuth}/>}  
                 /> 
             </Routes>
 

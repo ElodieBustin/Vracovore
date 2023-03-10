@@ -1,7 +1,6 @@
 import {useState} from 'react';
-import axios from 'axios';
 
-const Register = () => {
+const Register = ({ setAuth }) => {
   const [last_name, setLastName] = useState('');
   const [first_name, setFirstName] = useState('');
   const [email, setEmail] = useState('');
@@ -33,32 +32,41 @@ const Register = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     console.log(last_name, first_name, email, password);
+    console.log('setAuth: ', setAuth);
     if(last_name ==='' || first_name ==='' || email ==='' || password ===''){
       setError(true);
     } else {
       setSubmitted(true);
       setError(false);
     }
+    
+    try {
+      const body = { email, password, last_name, first_name };
+      const response = await fetch(
+        "http://localhost:3001/register",
+        {
+          method: "POST",
+          headers:{
+            "Content-Type": "application/json",
+            Accept:"application/json",
+            "Access-control-Allow-origin": "*"
+          },
+          body: JSON.stringify(body)
+        }
+      );
+      const parseRes = await response.json();
 
-       await fetch('http://localhost:3001/register',{
-      method: "POST",
-      crossDomain:true,
-      headers:{
-        "Content-Type": "application/json",
-        Accept:"application/json",
-        "Access-control-Allow-origin": "*"
-      },
-      body:JSON.stringify({
-        last_name,
-        first_name,
-        email,
-        password
-      }),
-    })
-    .then((res)=> res.json())
-    .then((data)=>{
-      console.log(data, "userRegister");
-    })
+      if (parseRes.token) {
+        localStorage.setItem("token", parseRes.token);
+        setAuth(true);
+        console.log("Register Successfully");
+      } else {
+        setAuth(false);
+        console.log(parseRes, "je suis dans le else du if parseRes");
+      }
+    } catch (err) {
+      console.error(err.message);
+    }
   };
 
   const successMessage = () => {
