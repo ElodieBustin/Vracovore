@@ -703,6 +703,36 @@
   margin-right: 0.5rem;
 }
 
+.dashboard {
+  margin: 3rem 0;
+}
+.dashboard__title {
+  text-align: center;
+  font-size: 3rem;
+}
+.dashboard__contentFav {
+  font-size: 1.5rem;
+  margin: 2rem 0;
+}
+.dashboard__button {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(0, 164, 228);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+.dashboard__button > a {
+  color: #fff;
+}
+.dashboard__button:hover {
+  background-color: rgb(88, 246, 140);
+}
+
 :root {
   font-size: 10px;
   font-family: "Poppins", sans-serif;

@@ -42,13 +42,14 @@ const Dashboard = ({setAuth}) => {
       return (
       <>
       <Header />
-      <div>
-        <p>Welcome to your Dashboard</p>
-
-        <h2>Welcome {first_name}</h2>
+      <div className='dashboard'>
+        <h1 className='dashboard__title'>Bienvenue sur votre page {first_name}</h1>
+        <div className='dashboard__contentFav'>
+          Vos produits favoris sont :
+        </div>
         
-      <button onClick={e => logout(e)} >
-      <Link to='/' >Logout</Link>
+      <button className='dashboard__button' onClick={e => logout(e)} >
+      <Link to='/' >Se déconnecter</Link>
       </button>
     </div>
     <Footer />
