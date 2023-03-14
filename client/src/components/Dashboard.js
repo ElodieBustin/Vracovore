@@ -16,7 +16,6 @@ const Dashboard = ({setAuth}) => {
         });
   
         const parseData = await res.json();
-        console.log(parseData);
         setName(parseData.first_name);
       } catch (err) {
         console.error(err.message);
@@ -47,7 +46,6 @@ const Dashboard = ({setAuth}) => {
         <div className='dashboard__contentFav'>
           Vos produits favoris sont :
         </div>
-        
       <button className='dashboard__button' onClick={e => logout(e)} >
       <Link to='/' >Se déconnecter</Link>
       </button>

@@ -22,10 +22,10 @@ function App(){
                     method: "POST",
                     headers: { 
                         "Content-Type": "application/json",
-            Accept:"application/json",
-            "Access-control-Allow-origin": "*",
-            jwt_token: localStorage.token }
-                  });
+                        Accept:"application/json",
+                        "Access-control-Allow-origin": "*",
+                        jwt_token: localStorage.token }
+                                });
             
                   const parseRes = await response.json();
             
@@ -38,10 +38,9 @@ function App(){
               useEffect(() => {
                 checkAuthenticated();
               }, []);
-            
-              const [isAuthenticated, setIsAuthenticated] = useState(false);
-            
-              const setAuth = boolean => {
+        
+                const [isAuthenticated, setIsAuthenticated] = useState(false);
+                const setAuth = boolean => {
                 setIsAuthenticated(boolean);
               };
      return (

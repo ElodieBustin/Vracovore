@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const router = require('./router/jwtAuth');
 const routerDash = require('./router/dashboard');
+const routerData = require('./router/data');
 
 const PORT = process.env.PORT || 3001;
 
@@ -16,6 +17,7 @@ app.use(express.json());
 
 app.use("/", router);
 app.use("/dashboard", routerDash);
+app.use("/listItems", routerData);
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);

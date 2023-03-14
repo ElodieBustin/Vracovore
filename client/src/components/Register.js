@@ -88,33 +88,6 @@ const Register = ({ setAuth }) => {
     );
   };
 
-
-    
-
-
-  // function handleSubmit(event){
-
-  //   fetch("http://localhost:3001/register",{
-  //     method: "POST",
-  //     crossDomain:true,
-  //     headers:{
-  //       "Content-Type": "application/json",
-  //       Accept:"application/json",
-  //       "Access-control-Allow-origin": "*"
-  //     },
-  //     body:JSON.stringify({
-  //       last_name,
-  //       first_name,
-  //       email,
-  //       password
-  //     }),
-  //   })
-  //   .then((res)=> res.json())
-  //   .then((data)=>{
-  //     console.log(data, "userRegister");
-  //   })
-  // }
-
     return (
 
       <form className='connectContainer__form' onSubmit={handleSubmit}>

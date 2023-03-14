@@ -551,6 +551,7 @@
 }
 .listContainer .productsContainer .productCard__imgContainer > img {
   width: 100%;
+  height: 250px;
 }
 .listContainer .productsContainer .productCard__infos {
   display: grid;
