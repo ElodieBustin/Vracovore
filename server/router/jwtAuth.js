@@ -42,8 +42,6 @@ router.post('/register', checkInfos, async (req, res) => {
     }
   });
 
-//login route (nom à renseigner plus tard)
-
 router.post('/login', checkInfos, async (req, res) => {
     try {
         const {email, password} = req.body;

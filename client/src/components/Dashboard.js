@@ -1,7 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {toast} from 'react-toastify';
-import Header from './Header';
-import Footer from './Footer';
 import {Link} from 'react-router-dom';
 
 const Dashboard = ({setAuth}) => {
@@ -40,7 +38,6 @@ const Dashboard = ({setAuth}) => {
     
       return (
       <>
-      <Header />
       <div className='dashboard'>
         <h1 className='dashboard__title'>Bienvenue sur votre page {first_name}</h1>
         <div className='dashboard__contentFav'>
@@ -50,7 +47,6 @@ const Dashboard = ({setAuth}) => {
       <Link to='/' >Se déconnecter</Link>
       </button>
     </div>
-    <Footer />
   </>
       );
     };

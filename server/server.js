@@ -18,6 +18,7 @@ app.use(express.json());
 app.use("/", router);
 app.use("/dashboard", routerDash);
 app.use("/listItems", routerData);
+app.use("/listItems/category", routerData);
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);

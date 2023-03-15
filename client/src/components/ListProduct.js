@@ -1,80 +1,64 @@
 import React, { useEffect, useState } from 'react';
-import Header from "./Header";
-import Footer from "./Footer";
+
+
+import ListProductCard from './ListProductCard';
 
 function ListProduct(){
 
     const [items, setItems] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState('');
 
-    const getAllItems = async () =>{
-        try {
-            const response = await fetch(
-                'http://localhost:3001/listItems',
-              {
-                method: "GET",
-                headers:{
-                  "Content-Type": "application/json",
-                  Accept:"application/json",
-                  "Access-control-Allow-origin": "*"
-                }
-              }
-            );
-            const parseRes = await response.json();
-            setItems(parseRes);
-            console.log(parseRes);
-          } catch (err) {
-            console.error(err.message);
-          }
-        };
-    
     useEffect(() => {
-        getAllItems()
+        async function fetchData() {
+            const [itemsResponse, categoriesResponse] = await Promise.all([
+                fetch('http://localhost:3001/listItems'),
+                fetch('http://localhost:3001/listItems/category')
+            ]);
+            const items = await itemsResponse.json();
+            const categories = await categoriesResponse.json();
+            setItems(items);
+            setCategories(categories);
+        }
+        fetchData();
     }, []);
 
+    const handleCategoryClick = (category) => {
+        setSelectedCategory(category === selectedCategory ? '' : category);
+    };
+    
+
+    const filteredItems = selectedCategory
+        ? items.filter(item => item.category === selectedCategory)
+        : items;
     return (
-    <>
-        <Header />
-    <section className="listContainer">
-
-        <h1 className="listContainer__title">Tous nos produits</h1>
-
-        <aside className="categoryContainer">
-            <ul className="categoryContainer__list">
-                <li className="categoryContainer__list--element">
-                    Féculent
-                </li>
-                <li className="categoryContainer__list--element">
-                    Légumes
-                </li>
-                <li className="categoryContainer__list--element">
-                    Fruits
-                </li>
-            </ul>
-        </aside>
-
-        <div className="productsContainer">
-            { items.map(item => 
-                <a key={item.id} href="produit.html" className="productCard">
-                <div className="productCard__name">{item.name}</div>
-                <div className="productCard__priceKilo">{item.price}/kilo</div>
-        
-                <div className="productCard__imgContainer">
-                    <img src={item.image} alt="" />
-                </div>
-        
-                <div className="productCard__infos">
-                    <span className="productCard__infos--quantity">500gr</span>
-                    <span className="productCard__infos--price">1.5€</span>
-                    <span className="productCard__infos--category">{item.category}</span>
-                </div>
-            </a>
-            )
-            }
-        </div>
-    </section>
-    <Footer />
-</>
+        <>
+            
+            <main className="listContainer">
+                <h1 className="listContainer__title">Tous nos produits</h1>
+                <section className='listContainer__mainPage'>
+                    <aside className="categoryContainer">
+                        <ul className="categoryContainer__list">
+                            <li key="all" className={`categoryContainer__list--element ${!selectedCategory && 'selected'}`} onClick={()=>handleCategoryClick('')}>
+                                Tous
+                            </li>
+                            {categories.map(category =>
+                                <li key={category.category} className={`categoryContainer__list--element ${category.category === selectedCategory && 'selected'}`} onClick={() => handleCategoryClick(category.category)}>
+                                    {category.category}
+                                </li>
+                            )}
+                        </ul>
+                    </aside>
+                    <div className="productsContainer">
+                        {filteredItems.map(item =>
+                            <ListProductCard key={item.id} item={item}/>
+                        )}
+                    </div>
+                </section>
+            </main>
+            
+        </>
     );
-};
+}
 
 export default ListProduct;

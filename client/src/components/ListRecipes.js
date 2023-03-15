@@ -1,10 +1,8 @@
-import Header from "./Header";
-import Footer from "./Footer";
+
 
 function ListRecipies(){
     return (
         <>
-        <Header />
         <div className="listRecipies">
         <div className="recipiesCard">
             <div className="recipiesCard__imgContainer">
@@ -37,7 +35,6 @@ function ListRecipies(){
         </div>
 
     </div>
-    <Footer />
     </>
     );
 };

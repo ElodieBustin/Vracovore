@@ -481,14 +481,25 @@
   width: 85%;
   margin: 1.5rem auto;
 }
+@media (min-width: 700px) {
+  .listContainer {
+    width: 100%;
+  }
+}
 .listContainer__title {
   font-size: 2.5rem;
   font-weight: 700;
   text-align: center;
   text-transform: uppercase;
-  margin-bottom: 2rem;
+  margin: 3rem;
 }
-.listContainer .categoryContainer {
+@media (min-width: 700px) {
+  .listContainer__mainPage {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.listContainer__mainPage .categoryContainer {
   width: 50%;
   height: -moz-fit-content;
   height: fit-content;
@@ -498,26 +509,39 @@
   border-radius: 10px;
   box-shadow: 10px 10px 14px -10px rgba(0, 0, 0, 0.75);
 }
-.listContainer .categoryContainer__list {
-  font-size: 1.3rem;
+@media (min-width: 700px) {
+  .listContainer__mainPage .categoryContainer {
+    margin: 4rem 0;
+    width: 300px;
+    box-sizing: border-box;
+    position: sticky;
+    top: 5rem;
+  }
 }
-.listContainer .categoryContainer__list :not(li:last-child) {
+.listContainer__mainPage .categoryContainer__list :not(li:last-child) {
   margin-bottom: 0.8rem;
 }
+.listContainer__mainPage .categoryContainer__list--element {
+  font-size: 1.3rem;
+  padding: 0.5rem;
+}
 @media (min-width: 700px) {
-  .listContainer .categoryContainer__list {
+  .listContainer__mainPage .categoryContainer__list--element {
     font-size: 1.6rem;
   }
 }
+.listContainer__mainPage .categoryContainer__list--element:hover {
+  cursor: pointer;
+}
 @media (min-width: 700px) {
-  .listContainer .productsContainer {
+  .listContainer__mainPage .productsContainer {
     display: flex;
     flex-wrap: wrap;
     margin: 3rem auto;
     justify-content: center;
   }
 }
-.listContainer .productsContainer .productCard {
+.listContainer__mainPage .productsContainer .productCard {
   margin-top: 2rem;
   padding: 1rem;
   display: block;
@@ -525,51 +549,54 @@
   border-radius: 5%;
 }
 @media (min-width: 700px) {
-  .listContainer .productsContainer .productCard {
+  .listContainer__mainPage .productsContainer .productCard {
     box-sizing: border-box;
     width: 40rem;
     margin: 1rem;
   }
 }
-.listContainer .productsContainer .productCard__name {
+.listContainer__mainPage .productsContainer .productCard__name {
   font-size: 2rem;
   font-weight: 700;
 }
-.listContainer .productsContainer .productCard__priceKilo {
+.listContainer__mainPage .productsContainer .productCard__priceKilo {
   font-size: 0.9rem;
   margin: 1rem 0;
 }
 @media (min-width: 700px) {
-  .listContainer .productsContainer .productCard__priceKilo {
+  .listContainer__mainPage .productsContainer .productCard__priceKilo {
     font-size: 1.1rem;
   }
 }
-.listContainer .productsContainer .productCard__imgContainer {
+.listContainer__mainPage .productsContainer .productCard__imgContainer {
   border-radius: 5%;
   overflow: hidden;
   margin-bottom: 1rem;
 }
-.listContainer .productsContainer .productCard__imgContainer > img {
+.listContainer__mainPage .productsContainer .productCard__imgContainer > img {
   width: 100%;
   height: 250px;
 }
-.listContainer .productsContainer .productCard__infos {
+.listContainer__mainPage .productsContainer .productCard__infos {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
 }
-.listContainer .productsContainer .productCard__infos span {
+.listContainer__mainPage .productsContainer .productCard__infos span {
   margin-bottom: 1rem;
   font-size: 1.5rem;
 }
-.listContainer .productsContainer .productCard__infos--quantity {
+.listContainer__mainPage .productsContainer .productCard__infos--quantity {
   grid-column: span 2;
 }
-.listContainer .productsContainer .productCard__infos--price {
+.listContainer__mainPage .productsContainer .productCard__infos--price {
   font-weight: 700;
 }
-.listContainer .productsContainer .productCard__infos--category {
+.listContainer__mainPage .productsContainer .productCard__infos--category {
   justify-self: end;
+}
+.listContainer .selected {
+  background: linear-gradient(to right, rgba(0, 164, 228, 0.25), rgba(88, 246, 140, 0.25));
 }
 
 .listRecipies {

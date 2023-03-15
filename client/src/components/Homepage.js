@@ -1,11 +1,7 @@
-import Header from "./Header";
-import Footer from "./Footer";
-
 /* eslint-disable jsx-a11y/iframe-has-title */
 function Homepage(){
     return (
         <>
-        <Header />
         <main className="page">
 
         <div className="first-block">
@@ -64,8 +60,6 @@ function Homepage(){
         </div>
 
     </main>
-
-    <Footer />
     </>
     );
 };

@@ -2,107 +2,137 @@
     width: 85%;
     margin: 1.5rem auto;
 
+    @include breakpoint-up(desktop){
+        width: 100%;
+    }
+
     &__title{
         font-size: 2.5rem;
         font-weight: 700;
         text-align: center;
         text-transform: uppercase;
-        margin-bottom: 2rem;
+        margin: 3rem;
     }
 
-    .categoryContainer{
-        width: 50%;
-        height: fit-content;
-        margin: auto;
-        padding: 1.5rem;
-        border: 1px rgb(206, 206, 206) solid;
-        border-radius: 10px;
-        box-shadow: 10px 10px 14px -10px rgba(0,0,0,0.75);
-
-    
-        &__list{
-            font-size: 1.3rem;
-            & :not(li:last-child){
-                margin-bottom: 0.8rem;
-            }
-
-            @include breakpoint-up(desktop){
-                font-size: 1.6rem ;
-            }
-        } 
-    }
-
-    .productsContainer{
+    &__mainPage{
 
         @include breakpoint-up(desktop){
             display: flex;
-            flex-wrap: wrap;
-            margin: 3rem auto;
-            justify-content: center;
+            justify-content: space-between;
         }
-
-        .productCard{
-            margin-top: 2rem;
-            padding: 1rem;
-            display: block;
+        .categoryContainer{
+            width: 50%;
+            height: fit-content;
+            margin: auto;
+            padding: 1.5rem;
             border: 1px rgb(206, 206, 206) solid;
-            border-radius: 5%;
-
+            border-radius: 10px;
+            box-shadow: 10px 10px 14px -10px rgba(0,0,0,0.75);
+            
             @include breakpoint-up(desktop){
+                margin: 4rem 0;
+                width: 300px;
                 box-sizing: border-box;
-                width: 40rem;
-                margin: 1rem;
+                position: sticky;
+                top: 5rem;
             }
-    
-            &__name{
-                font-size: 2rem;
-                font-weight: 700;
-            }
-            &__priceKilo{
-                font-size: 0.9rem;
-                margin: 1rem 0;
+        
+            &__list{
+                & :not(li:last-child){
+                    margin-bottom: 0.8rem;
+                }
+                &--element{
+                    font-size: 1.3rem;
+                    padding: 0.5rem;
+        
+                    @include breakpoint-up(desktop){
+                        font-size: 1.6rem ;
+                    }
 
-                @include breakpoint-up(desktop){
-                    font-size: 1.1rem;
+                    &:hover{
+                        cursor: pointer;
+                    }
                 }
+
+            } 
+        }
+    
+        .productsContainer{
+    
+            @include breakpoint-up(desktop){
+                display: flex;
+                flex-wrap: wrap;
+                margin: 3rem auto;
+                justify-content: center;
             }
     
-            &__imgContainer{
+            .productCard{
+                margin-top: 2rem;
+                padding: 1rem;
+                display: block;
+                border: 1px rgb(206, 206, 206) solid;
                 border-radius: 5%;
-                overflow: hidden;
-                margin-bottom: 1rem;
     
-                >img{
-                    width: 100%;
-                    height: 250px;
+                @include breakpoint-up(desktop){
+                    box-sizing: border-box;
+                    width: 40rem;
+                    margin: 1rem;
                 }
-            }
-    
-            &__infos{
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: 1fr 1fr;
-    
-                & span{
-                    margin-bottom: 1rem;
-                    font-size: 1.5rem;
-                }
-    
-                &--quantity{
-                    grid-column: span 2;
-                }
-    
-                &--price{
+        
+                &__name{
+                    font-size: 2rem;
                     font-weight: 700;
                 }
+                &__priceKilo{
+                    font-size: 0.9rem;
+                    margin: 1rem 0;
     
-                &--category{
-                    justify-self: end;
+                    @include breakpoint-up(desktop){
+                        font-size: 1.1rem;
+                    }
+                }
+        
+                &__imgContainer{
+                    border-radius: 5%;
+                    overflow: hidden;
+                    margin-bottom: 1rem;
+        
+                    >img{
+                        width: 100%;
+                        height: 250px;
+                    }
+                }
+        
+                &__infos{
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    grid-template-rows: 1fr 1fr;
+        
+                    & span{
+                        margin-bottom: 1rem;
+                        font-size: 1.5rem;
+                    }
+        
+                    &--quantity{
+                        grid-column: span 2;
+                    }
+        
+                    &--price{
+                        font-weight: 700;
+                    }
+        
+                    &--category{
+                        justify-self: end;
+                    }
                 }
             }
         }
     }
 
-    
+    .selected {
+        background: linear-gradient(to right, rgba(0, 164, 228, .25), rgba(88, 246, 140, .25));
+        }
 }
+
+
 

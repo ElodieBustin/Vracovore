@@ -40,7 +40,10 @@ CREATE TABLE IF NOT EXISTS "item" (
     "name" VARCHAR(42),
     "image" TEXT,
     "category" VARCHAR(42),
-    "price" MONEY
+    "priceKilo" MONEY,
+    "unity" VARCHAR(5)
+    "weight" VARCHAR(42),
+    "description" TEXT
 );
 
 CREATE TABLE IF NOT EXISTS "recipe" (
@@ -60,9 +63,14 @@ CREATE TABLE IF NOT EXISTS "recipe_steps" (
 INSERT INTO "users" ("last_name", "first_name", "email", "password") VALUES 
 ("Testa", "Testy", "test@test.com", "tartanpion");
 
-INSERT INTO "item"("name", "image", "category", "price") VALUES
-('Riz blanc', 'https://pixabay.com/fr/photos/riz-riz-blanc-cor%c3%a9e-aliments-3997767/', 'Féculents', '3'),
-('Pâtes', 'https://pixabay.com/fr/photos/p%c3%a2tes-rotini-cru-non-cuit-2093/', 'Féculents', '2'),
-('Pommes', 'https://pixabay.com/fr/photos/pomme-rouge-fruit-aliments-frais-1834639/', 'Fruits', '4,5');
+INSERT INTO "item"("name", "image", "category", "priceKilo") VALUES
+('Riz blanc', 'https://cdn.pixabay.com/photo/2014/10/22/18/43/rice-498688_960_720.jpg', 'Féculents', '3'),
+('Pâtes', 'https://cdn.pixabay.com/photo/2010/12/13/10/00/pasta-2093_960_720.jpg', 'Féculents', '2'),
+('Pommes', 'https://cdn.pixabay.com/photo/2020/05/17/19/43/apple-5183288_960_720.jpg', 'Fruits', '4,5'),
+('Carotte', 'https://cdn.pixabay.com/photo/2016/07/11/00/18/carrots-1508847_960_720.jpg', 'Légumes', '3,5'),
+('Fraise', 'https://cdn.pixabay.com/photo/2013/04/02/21/47/strawberries-99551_960_720.jpg', 'Fruits', '4,8'),
+('Farine de blé T100', 'https://cdn.pixabay.com/photo/2016/08/09/22/23/flour-1581967_960_720.jpg', 'Farine', '1,9'),
+('Savon de Marseille', 'https://cdn.pixabay.com/photo/2015/03/14/13/56/soap-673176_960_720.jpg', 'Savon', '10'),
+('Cristaux de soude', 'https://cdn.pixabay.com/photo/2019/02/24/13/52/soda-4017615_960_720.jpg', 'Produits ménagers', '5.35' );
 
 COMMIT;
