@@ -5,10 +5,11 @@ import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ListProduct from './components/ListProduct';
-import ListRecipies from './components/ListRecipes';
+import ListRecipes from './components/ListRecipes';
 import Homepage from './components/Homepage';
 import ConnectForm from './components/connectForm';
 import Dashboard from './components/Dashboard';
+import Product from './components/Product';
 
 import './scss/reset.css';
 import './scss/styles.css';
@@ -25,9 +26,9 @@ function App(){
             method: "POST",
             headers: { 
               "Content-Type": "application/json",
-              Accept:"application/json",
-              "Access-control-Allow-origin": "*",
-              jwt_token: localStorage.token 
+              "Accept":"application/json",
+              "Access-Control-Allow-Origin": "*",
+              "jwt_token": localStorage.token 
             }
           }
         );
@@ -53,9 +54,10 @@ function App(){
                 <Routes>
                 <Route exact path="/" element={<Homepage />} />
                 <Route path="/products" element={<ListProduct />} />
-                <Route path="/recettes" element={<ListRecipies />} />
+                <Route path="/recettes" element={<ListRecipes />} />
                 <Route path="/login" element={!isAuthenticated ? <ConnectForm setAuth={setAuth} /> : <Navigate to="/dashboard" />} />
                 <Route path="/dashboard" element={<Dashboard setAuth={setAuth} />} />
+                <Route path="/product/:id" element={<Product />} />
                 </Routes>
         <Footer />
       </Router>

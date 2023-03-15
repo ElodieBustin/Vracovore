@@ -25,15 +25,14 @@ function ListProduct(){
 
     const handleCategoryClick = (category) => {
         setSelectedCategory(category === selectedCategory ? '' : category);
-    };
-    
+    }; 
 
     const filteredItems = selectedCategory
         ? items.filter(item => item.category === selectedCategory)
         : items;
+
     return (
         <>
-            
             <main className="listContainer">
                 <h1 className="listContainer__title">Tous nos produits</h1>
                 <section className='listContainer__mainPage'>

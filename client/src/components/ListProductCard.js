@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom';
 
 function ListProductCard({item}) {
     return(
-        <a  href="produit.html" className="productCard">
+        <Link to={`/product/${item.id}`} className="productCard">
             <div className="productCard__name">{item.name}</div>
             <div className="productCard__priceKilo">{item.priceKilo}/kilo</div>
 
@@ -14,7 +15,7 @@ function ListProductCard({item}) {
                 <span className="productCard__infos--price">1.5€</span>
                 <span className="productCard__infos--category">{item.category}</span>
             </div>
-        </a>
+        </Link>
     )
 }
 
