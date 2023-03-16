@@ -5,9 +5,9 @@ const authorization = require('../middlewares/authorization');
 routerDash.get('/', authorization, async(req, res)=>{
     try {
 
-        const user = await pool.query("SELECT last_name, first_name FROM users WHERE id = $1", [req.user]);
-
+        const user = await pool.query("SELECT id, last_name, first_name FROM users WHERE id = $1", [req.user]);
         res.json(user.rows[0]);
+        console.log(user.rows);
         
     } catch (error) {
         console.log(error.message);

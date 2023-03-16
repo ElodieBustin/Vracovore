@@ -8,13 +8,14 @@ const Dashboard = ({setAuth}) => {
 
     const getProfile = async () => {
       try {
-        const res = await fetch("http://localhost:3000/dashboard/", {
+        const res = await fetch("http://localhost:3001/dashboard/", {
           method: "GET",
           headers: { jwt_token: localStorage.token }
         });
   
         const parseData = await res.json();
         setName(parseData.first_name);
+        console.log('dans dashboard, je suis parsedata.id: ', parseData.id);
       } catch (err) {
         console.error(err.message);
       }
@@ -33,8 +34,7 @@ const Dashboard = ({setAuth}) => {
 
     useEffect(() => {
         getProfile();
-      }, []);
-
+      }, [])
     
       return (
       <>

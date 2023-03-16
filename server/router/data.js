@@ -16,7 +16,6 @@ routerData.get('/', async (req, res)=>{
 routerData.get('/category', async (req, res) => {
     try{
         const categories = await pool.query("SELECT category FROM item GROUP BY category");
-        console.log(categories.rows);
         res.json(categories.rows)
     } catch (error) {
         console.log(error.message);
@@ -27,9 +26,28 @@ routerData.get('/category', async (req, res) => {
 routerData.get('/product/:id', async (req, res) => {
     const item_id = parseInt(req.params.id);
     const productItem = await pool.query("SELECT * FROM item WHERE id = $1", [item_id]);
-    console.log(productItem.rows);
     res.json(productItem.rows);
 });
 
+routerData.post('/addFavorites', async (req, res) => {
+    //try/catch pour check doublon
+    const { userId, itemId } = req.body;
+    const result = await pool.query(
+      'INSERT INTO favorite_items (user_id, item_id) VALUES ($1, $2) RETURNING id',
+      [userId, itemId]
+    );
+    res.json(result.rows[0]);
+    
+  });
+
+  routerData.get('/listFavorites', async (req, res) =>{
+    try {
+        const favoriteList = await pool.query("SELECT * FROM item INNER JOIN favorite_items ON item.id = favorite_items.item_id WHERE favorite_items.user_id = 2");
+        res.json(favoriteList.rows);
+        console.log(favoriteList);
+    } catch (error) {
+        console.log(error.message)
+    }
+  })
 
 module.exports = routerData;

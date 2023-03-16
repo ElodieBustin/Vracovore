@@ -16,6 +16,22 @@ import './scss/styles.css';
 
 function App(){
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userId, setUserId] = useState('');
+
+  const getProfile = async () => {
+    try {
+      const res = await fetch("http://localhost:3001/dashboard/", {
+        method: "GET",
+        headers: { jwt_token: localStorage.token }
+      });
+
+      const parseData = await res.json();
+      setUserId(parseData.id);
+      console.log('je suis parseData.id: ', parseData.id)
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
 
   useEffect(() => {
     async function checkAuthenticated() {
@@ -41,23 +57,26 @@ function App(){
     }
     
     checkAuthenticated();
+    getProfile();
   }, []);
 
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean);
   };
 
+
+
   return (
     <React.StrictMode>
       <Router>
         <Header />
                 <Routes>
-                <Route exact path="/" element={<Homepage />} />
+                <Route path="/" element={<Homepage />} />
                 <Route path="/products" element={<ListProduct />} />
                 <Route path="/recettes" element={<ListRecipes />} />
                 <Route path="/login" element={!isAuthenticated ? <ConnectForm setAuth={setAuth} /> : <Navigate to="/dashboard" />} />
                 <Route path="/dashboard" element={<Dashboard setAuth={setAuth} />} />
-                <Route path="/product/:id" element={<Product />} />
+                <Route path="/product/:id" element={<Product isAuthenticated={isAuthenticated} userId={userId} />} />
                 </Routes>
         <Footer />
       </Router>

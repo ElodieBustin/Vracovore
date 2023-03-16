@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS "recipe_steps" (
 );
 
 INSERT INTO "users" ("last_name", "first_name", "email", "password") VALUES 
-("Testa", "Testy", "test@test.com", "tartanpion");
+('Testa', 'Testy', 'test@test.com', 'tartanpion');
 
 INSERT INTO "item"("name", "image", "category", "priceKilo") VALUES
 ('Riz blanc', 'https://cdn.pixabay.com/photo/2014/10/22/18/43/rice-498688_960_720.jpg', 'Féculents', '3'),
