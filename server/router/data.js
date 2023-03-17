@@ -59,10 +59,12 @@ router.post('/checkFavorites', async (req, res) => {
   }
 });
 
-router.get('/getfavorites', async (req, res) => {
+router.get('/getfavorites/:userId', async (req, res) => {
+  const userId = req.params.userId;
+  console.log(userId);
   try {
     const favoriteList = await pool.query(
-      'SELECT * FROM item INNER JOIN favorite_items ON item.id = favorite_items.item_id WHERE favorite_items.user_id = $1', []
+      'SELECT * FROM items INNER JOIN favorite_items ON items.id = favorite_items.item_id WHERE favorite_items.user_id = $1', [userId]
     );
     res.json(favoriteList.rows);
   } catch (error) {

@@ -79,7 +79,7 @@ function App(){
                 <Route path="/products" element={<ListProduct />} />
                 <Route path="/recettes" element={<ListRecipes />} />
                 <Route path="/login" element={!isAuthenticated ? <ConnectForm setAuth={setAuth} /> : <Navigate to="/dashboard" />} />
-                <Route path="/dashboard" element={<Dashboard setAuth={setAuth} />} />
+                <Route path="/dashboard" element={<Dashboard setAuth={setAuth} userId={userId} />} />
                 <Route path="/product/:id" element={<Product isAuthenticated={isAuthenticated} userId={userId} />} />
                 </Routes>
         <Footer />

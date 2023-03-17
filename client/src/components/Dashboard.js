@@ -1,9 +1,25 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 
-const Dashboard = ({setAuth}) => {
-
+const Dashboard = ({setAuth, userId}) => {
     const [first_name, setName] = useState("");
+
+    const [favoriteItems, setFavoriteItems] = useState([]);
+
+    useEffect(() => {
+      if (userId) {
+        const fetchFavoriteItems = async () => {
+          try {
+            const favoriteResponse = await fetch(`http://localhost:3001/data/getFavorites/${userId}`);
+            const favoriteItems = await favoriteResponse.json();
+            setFavoriteItems(favoriteItems);
+          } catch (error) {
+            console.error(error);
+          }
+        };
+        fetchFavoriteItems();
+      }
+    }, [userId]);
 
     const getProfile = async () => {
       try {
@@ -40,6 +56,9 @@ const Dashboard = ({setAuth}) => {
         <h1 className='dashboard__title'>Bienvenue sur votre page {first_name}</h1>
         <div className='dashboard__contentFav'>
           Vos produits favoris sont :
+          <div>
+            {favoriteItems.map(favorite => favorite.name)}
+          </div>
         </div>
       
       <Link to='/' >
