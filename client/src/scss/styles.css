@@ -401,9 +401,11 @@
 @media (min-width: 700px) {
   .product__imgContainer {
     margin-right: 2.5rem;
+    max-width: 45%;
   }
 }
 .product__infos {
+  width: 50%;
   margin: 1rem 0;
   padding: 1rem 0;
   position: relative;
@@ -416,31 +418,12 @@
 .product__infos > span {
   margin: 1rem 0;
 }
-.product__infos--subContainer {
-  display: flex;
-  justify-content: space-between;
-}
-@media (min-width: 700px) {
-  .product__infos--subContainer {
-    font-size: 1.2rem;
-  }
-}
 .product__infos--name {
   font-size: 3rem;
   font-weight: 700;
   margin-bottom: 1.8rem;
 }
-.product__infos--quantity {
-  margin-right: 3rem;
-}
-.product__infos--category {
-  display: inline-block;
-  background-color: rgb(88, 246, 140);
-  font-size: 1.5rem;
-  font-weight: 500;
-  padding: 0.5rem;
-}
-.product__infos--price {
+.product__infos--priceKilo {
   position: absolute;
   top: 0.5rem;
   right: 1rem;
@@ -449,9 +432,26 @@
   text-decoration: underline;
 }
 @media (min-width: 700px) {
-  .product__infos--price {
+  .product__infos--priceKilo {
     font-size: 1.8rem;
   }
+}
+.product__infos__subContainer {
+  font-size: 1.2rem;
+  margin: 2rem 0;
+}
+@media (min-width: 700px) {
+  .product__infos__subContainer {
+    font-size: 1.8rem;
+  }
+}
+.product__infos--category {
+  display: inline-block;
+  background: linear-gradient(to right, rgb(88, 246, 140), rgb(0, 164, 228));
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 500;
+  padding: 0.5rem;
 }
 @media (min-width: 700px) {
   .product__infos__description {
@@ -475,6 +475,9 @@
   .product__infos__description--text {
     font-size: 1.5rem;
   }
+}
+.product .italic {
+  font-style: italic;
 }
 
 .listContainer {
@@ -515,7 +518,7 @@
     width: 300px;
     box-sizing: border-box;
     position: sticky;
-    top: 5rem;
+    top: 16rem;
   }
 }
 .listContainer__mainPage .categoryContainer__list :not(li:last-child) {
@@ -542,11 +545,13 @@
   }
 }
 .listContainer__mainPage .productsContainer .productCard {
-  margin-top: 2rem;
-  padding: 1rem;
-  display: block;
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border: 1px rgb(206, 206, 206) solid;
   border-radius: 5%;
+  height: 35rem;
 }
 @media (min-width: 700px) {
   .listContainer__mainPage .productsContainer .productCard {
@@ -559,15 +564,6 @@
   font-size: 2rem;
   font-weight: 700;
 }
-.listContainer__mainPage .productsContainer .productCard__priceKilo {
-  font-size: 0.9rem;
-  margin: 1rem 0;
-}
-@media (min-width: 700px) {
-  .listContainer__mainPage .productsContainer .productCard__priceKilo {
-    font-size: 1.1rem;
-  }
-}
 .listContainer__mainPage .productsContainer .productCard__imgContainer {
   border-radius: 5%;
   overflow: hidden;
@@ -578,22 +574,18 @@
   height: 250px;
 }
 .listContainer__mainPage .productsContainer .productCard__infos {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  display: flex;
+  justify-content: space-between;
 }
 .listContainer__mainPage .productsContainer .productCard__infos span {
   margin-bottom: 1rem;
   font-size: 1.5rem;
 }
-.listContainer__mainPage .productsContainer .productCard__infos--quantity {
-  grid-column: span 2;
-}
-.listContainer__mainPage .productsContainer .productCard__infos--price {
-  font-weight: 700;
+.listContainer__mainPage .productsContainer .productCard__infos--priceKilo {
+  font-style: italic;
 }
 .listContainer__mainPage .productsContainer .productCard__infos--category {
-  justify-self: end;
+  font-weight: bold;
 }
 .listContainer .selected {
   background: linear-gradient(to right, rgba(0, 164, 228, 0.25), rgba(88, 246, 140, 0.25));
