@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 
-const Dashboard = ({setAuth, userId}) => {
+const Dashboard = ({setAuth}) => {
     const [first_name, setName] = useState("");
+    const [userId, setUserId] = useState('');
 
     const [favoriteItems, setFavoriteItems] = useState([]);
 
@@ -30,6 +31,7 @@ const Dashboard = ({setAuth, userId}) => {
   
         const parseData = await res.json();
         setName(parseData.first_name);
+        setUserId(parseData.id);
       } catch (err) {
         console.error(err.message);
       }
