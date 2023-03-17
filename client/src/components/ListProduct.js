@@ -12,8 +12,8 @@ function ListProduct(){
     useEffect(() => {
         async function fetchData() {
             const [itemsResponse, categoriesResponse] = await Promise.all([
-                fetch('http://localhost:3001/listItems'),
-                fetch('http://localhost:3001/listItems/category')
+                fetch('http://localhost:3001/data'),
+                fetch('http://localhost:3001/data/category')
             ]);
             const items = await itemsResponse.json();
             const categories = await categoriesResponse.json();

@@ -15,20 +15,19 @@ const Dashboard = ({setAuth}) => {
   
         const parseData = await res.json();
         setName(parseData.first_name);
-        console.log('dans dashboard, je suis parsedata.id: ', parseData.id);
       } catch (err) {
         console.error(err.message);
       }
     };
   
-    const logout = async e => {
-      e.preventDefault();
-      try {
-        localStorage.removeItem("token");
-        setAuth(false);
-        toast.success("Logout successfully");
-      } catch (err) {
-        console.error(err.message);
+    const handleLogout = async () => {
+      if (window.confirm('Êtes-vous sûr(e) et certain(e) de vouloir vous déconnecter ? Ce n\'est pas un mauvais clic ? Pas une erreur ? 100% ?')) {
+        try {
+          localStorage.removeItem('token');
+          setAuth(false);
+        } catch (err) {
+          console.error(err.message);
+        }
       }
     };
 
@@ -43,9 +42,12 @@ const Dashboard = ({setAuth}) => {
         <div className='dashboard__contentFav'>
           Vos produits favoris sont :
         </div>
-      <button className='dashboard__button' onClick={e => logout(e)} >
-      <Link to='/' >Se déconnecter</Link>
-      </button>
+      
+      <Link to='/' >
+        <button className='dashboard__button' onClick={e => handleLogout(e)} >
+          Se déconnecter
+        </button>
+      </Link>
     </div>
   </>
       );

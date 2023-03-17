@@ -7,9 +7,9 @@ function checkInfos(req, res, next) {
   
     if (req.path === "/register") {
       if (![last_name, first_name, email, password].every(Boolean)) {
-        return res.status(401).json("Missing Credentials for register");
+        return res.status(401).json("Un ou plusieurs champs sont vides");
       } else if (!validEmail(email)) {
-        return res.status(401).json("Invalid Email");
+        return res.status(401).json("Votre email est invalide");
       }
     } else if (req.path === "/login") {
       if (![email, password].every(Boolean)) {

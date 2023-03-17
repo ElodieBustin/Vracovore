@@ -20,14 +20,13 @@ function App(){
 
   const getProfile = async () => {
     try {
-      const res = await fetch("http://localhost:3001/dashboard/", {
+      const res = await fetch("http://localhost:3001/dashboard", {
         method: "GET",
         headers: { jwt_token: localStorage.token }
       });
 
       const parseData = await res.json();
       setUserId(parseData.id);
-      console.log('je suis parseData.id: ', parseData.id)
     } catch (err) {
       console.error(err.message);
     }
@@ -35,9 +34,14 @@ function App(){
 
   useEffect(() => {
     async function checkAuthenticated() {
+      if (!localStorage.token) {
+        setIsAuthenticated(false);
+        return;
+      }
+
       try {
         const response = await fetch(
-          "http://localhost:3001/verify", 
+          "http://localhost:3001/jwtAuth/verify", 
           {
             method: "POST",
             headers: { 
@@ -51,13 +55,13 @@ function App(){
         
         const parseRes = await response.json();
         setIsAuthenticated(parseRes);
+        getProfile();
       } catch (err) {
         console.error(err.message);
       }
     }
     
     checkAuthenticated();
-    getProfile();
   }, []);
 
   const setAuth = (boolean) => {

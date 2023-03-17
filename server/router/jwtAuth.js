@@ -16,7 +16,7 @@ router.post('/register', checkInfos, async (req, res) => {
       console.log(checkUser);
 
       if(checkUser.rows.length > 0){
-        return res.status(401).json("User already exist");
+        return res.status(401).json("Compte déjà créé");
       }
       
       const saltRound = 10;
@@ -26,9 +26,7 @@ router.post('/register', checkInfos, async (req, res) => {
       //Idem, cela prend du temps
       const bcryptPassword = await bcrypt.hash(password, salt);
 
-
       const newUser = await pool.query("INSERT INTO users(last_name, first_name, email, password) VALUES ($1, $2, $3, $4) RETURNING * ", [last_name, first_name, email, bcryptPassword]);
-      console.log(newUser.rows[0]);
 
       const token = jwtGenerator(newUser.rows[0].id);
   

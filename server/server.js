@@ -1,27 +1,21 @@
 const express = require('express');
 const cors = require('cors');
-const router = require('./router/jwtAuth');
-const routerDash = require('./router/dashboard');
-const routerData = require('./router/data');
+const jwtAuthRoutes = require('./router/jwtAuth');
+const dashboardRoutes = require('./router/dashboard');
+const dataRoutes = require('./router/data');
 
 const PORT = process.env.PORT || 3001;
 
 const app = express();
 
-//MIDDLEWARE
+// MIDDLEWARES
 app.use(cors());
 app.use(express.json());
 
-
-//ROUTES
-
-app.use("/", router);
-app.use("/dashboard", routerDash);
-app.use("/listItems", routerData);
-app.use("/listItems/category", routerData);
-app.use("/listItems/product/:id", routerData);
-app.use("/listItems/listFavorites", routerData);
-
+// ROUTES
+app.use('/jwtAuth', jwtAuthRoutes);
+app.use('/dashboard', dashboardRoutes);
+app.use('/data', dataRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);

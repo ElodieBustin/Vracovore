@@ -1,49 +1,26 @@
 import {useState} from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = ({ setAuth }) => {
-  const [last_name, setLastName] = useState('');
-  const [first_name, setFirstName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [inputValues, setInputValues] = useState({
+    last_name: '',
+    first_name: '',
+    email: '',
+    password: ''
+  });
 
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState(false);
-
-  const handleFirstName = e => {
-    setFirstName(e.target.value);
-    setSubmitted(false);
-  }
-
-  const handleLasttName = e => {
-    setLastName(e.target.value);
-    setSubmitted(false);
-  }
-
-  const handleEmail = e => {
-    setEmail(e.target.value);
-    setSubmitted(false);
-  }
-
-  const handlePassword = e => {
-    setPassword(e.target.value);
-    setSubmitted(false);
+  const handleChange = e => {
+    const { name, value } = e.target;
+    setInputValues({ ...inputValues, [name]: value });
   }
 
   const handleSubmit = async e => {
     e.preventDefault();
-    console.log(last_name, first_name, email, password);
-    console.log('setAuth: ', setAuth);
-    if(last_name ==='' || first_name ==='' || email ==='' || password ===''){
-      setError(true);
-    } else {
-      setSubmitted(true);
-      setError(false);
-    }
     
     try {
-      const body = { email, password, last_name, first_name };
       const response = await fetch(
-        "http://localhost:3001/register",
+        "http://localhost:3001/jwtAuth/register",
         {
           method: "POST",
           headers:{
@@ -51,7 +28,7 @@ const Register = ({ setAuth }) => {
             Accept:"application/json",
             "Access-control-Allow-origin": "*"
           },
-          body: JSON.stringify(body)
+          body: JSON.stringify(inputValues)
         }
       );
       const parseRes = await response.json();
@@ -59,97 +36,81 @@ const Register = ({ setAuth }) => {
       if (parseRes.token) {
         localStorage.setItem("token", parseRes.token);
         setAuth(true);
-        console.log("Register Successfully");
+        toast.success('Votre compte est bien enregistré');
       } else {
         setAuth(false);
-        console.log(parseRes, "je suis dans le else du if parseRes");
+        toast.error(parseRes);
       }
     } catch (err) {
       console.error(err.message);
     }
   };
 
-  const successMessage = () => {
-    return (
-      <div className='success'
-      style={{display: submitted ? '' : 'none'
-    }}>
-      <h1>User {last_name} {first_name} registered</h1>
-    </div>
-    );
-  };
-
-  const errorMessage = () =>{
-    return(
-      <div className='error'
-      style={{display: error ? '' : 'none'}}>
-        <h1>Please enter all the fields</h1>
-      </div>
-    );
-  };
 
     return (
 
       <form className='connectContainer__form' onSubmit={handleSubmit}>
-              <div className='messages'>
-        {errorMessage()}
-        {successMessage()}
-      </div>
-        <h3>Sign Up</h3>
+        <h3>Créer mon compte</h3>
       <div className='connectContainer__label'>
 
       <div className='connectContainer__label--lastName label'>
-          <label className='labelInput'>Last name</label>
+          <label className='labelInput'>Nom</label>
           <input 
             type="text" 
             className='input'
-            placeholder="Last name" 
-            onChange={handleLasttName}
+            placeholder="Nom" 
+            value={inputValues.last_name}
+            name="last_name"
+            onChange={(e)=>handleChange(e)}
             />
         </div>
         
         <div className='connectContainer__label--firstName label'>
-          <label className='labelInput'>First name</label>
+          <label className='labelInput'>Prénom</label>
           <input
             type="text"
             className='input'
-            placeholder="First name"
-            onChange={handleFirstName}
+            placeholder="Prénom"
+            name="first_name"
+            value={inputValues.first_name}
+            onChange={handleChange}
           />
         </div>
 
 
 
         <div className='connectContainer__label--email label'>
-          <label className='labelInput'>Email address</label>
+          <label className='labelInput'>Email</label>
           <input
             type="email"
             className='input'
-            placeholder="Enter email"
-            onChange={handleEmail}
+            placeholder="Votre email"
+            name="email"
+            value={inputValues.email}
+            onChange={handleChange}
           />
         </div>
 
         <div className='connectContainer__label--password label'>
-          <label className='labelInput'>Password</label>
+          <label className='labelInput'>Mot de passe</label>
           <input
             type="password"
             className='input'
-            placeholder="Enter password"
-            onChange={handlePassword}
+            placeholder="Votre mot de passe"
+            name="password"
+            value={inputValues.password}
+            onChange={handleChange}
           />
         </div>
       </div>
         <div className='connectContainer__submit'>
           <button type="submit">
-            Sign Up
+            S'enregistrer
           </button>
         </div>
-        {/* <p className="forgot-password text-right">
-          Already registered <a href="/sign-in">sign in?</a>
-        </p> */}
+        <ToastContainer />
       </form>
     )
   }
 
-export default Register
+export default Register;

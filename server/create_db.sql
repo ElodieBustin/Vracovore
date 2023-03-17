@@ -2,7 +2,7 @@ BEGIN;
 
 DROP TABLE IF EXISTS "users",
 "favorite_items",
-"item",
+"items",
 "ingredients",
 "recipe",
 "steps",
@@ -35,13 +35,13 @@ CREATE TABLE IF NOT EXISTS "favorite_items" (
     "item_id" INT REFERENCES "item"(id)
 );
 
-CREATE TABLE IF NOT EXISTS "item" (
+CREATE TABLE IF NOT EXISTS "items" (
     "id" SERIAL PRIMARY KEY,
     "name" VARCHAR(42),
     "image" TEXT,
     "category" VARCHAR(42),
     "priceKilo" MONEY,
-    "unity" VARCHAR(5)
+    "unityPrice" MONEY,
     "weight" VARCHAR(42),
     "description" TEXT
 );
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS "recipe_steps" (
 INSERT INTO "users" ("last_name", "first_name", "email", "password") VALUES 
 ('Testa', 'Testy', 'test@test.com', 'tartanpion');
 
-INSERT INTO "item"("name", "image", "category", "priceKilo") VALUES
+INSERT INTO "items"("name", "image", "category", "priceKilo", "unityPrice", "weight", "description") VALUES
 ('Riz blanc', 'https://cdn.pixabay.com/photo/2014/10/22/18/43/rice-498688_960_720.jpg', 'Féculents', '3'),
 ('Pâtes', 'https://cdn.pixabay.com/photo/2010/12/13/10/00/pasta-2093_960_720.jpg', 'Féculents', '2'),
 ('Pommes', 'https://cdn.pixabay.com/photo/2020/05/17/19/43/apple-5183288_960_720.jpg', 'Fruits', '4,5'),
