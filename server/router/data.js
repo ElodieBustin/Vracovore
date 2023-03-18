@@ -95,4 +95,15 @@ router.get('/getfavorites/:userId', async (req, res) => {
   }
 });
 
+router.get('/listRecipes', async (req, res) => {
+  try {
+    const items = await pool.query('SELECT * FROM recipes ORDER BY title');
+    console.log('je suis dans recipes serveur');
+    res.json(items.rows);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json('Server error');
+  }
+});
+
 module.exports = router;

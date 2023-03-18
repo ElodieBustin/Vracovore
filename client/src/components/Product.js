@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function Product({isAuthenticated}){
@@ -47,7 +49,7 @@ function Product({isAuthenticated}){
       });
       const checkFavResponse = await response.json();
       setIsAdded(checkFavResponse);
-      console.log(checkFavResponse);
+      
     }
     
 
@@ -65,8 +67,8 @@ function Product({isAuthenticated}){
           body: JSON.stringify({ item_id, user_id })
         });
         const checkFavRes = await response.json();
-        setIsAdded(checkFavRes)
-        console.log(checkFavRes);
+        setIsAdded(checkFavRes);
+        toast('Ce produit a bien été ajouté à vos favoris !')
       };
 
       const deleteFavorite = async (item_id, user_id) => {
@@ -80,9 +82,8 @@ function Product({isAuthenticated}){
           },
           body: JSON.stringify({ item_id, user_id })
         })
-        console.log(response);
-        console.log('test delete');
         setIsAdded(false);
+        toast("Ce produit a bien été retiré de vos favoris");
       }
     
     return (
@@ -110,10 +111,10 @@ function Product({isAuthenticated}){
       </div>
 
       {isAuthenticated ? (
-        isAdded ? <button className="button delete" onClick={() => deleteFavorite(id, userId)}>Delete favorite</button> : <button className="button add" onClick={() => addToFavorites(id, userId)}>Add to favorite</button>
+        isAdded ? <button className="button delete" onClick={() => deleteFavorite(id, userId)}>Delete favorite <i className="fa-solid fa-heart-crack"></i></button> : <button className="button add" onClick={() => addToFavorites(id, userId)}>Add to favorite <i className="fa-solid fa-heart"></i></button>
       ) : null}
     </div>
-
+    <ToastContainer />
     </article>
 
     );
