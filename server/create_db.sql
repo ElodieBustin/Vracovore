@@ -86,4 +86,56 @@ INSERT INTO "items"("name", "image", "category", "priceKilo", "unityPrice", "wei
 ('Café Equitable Bio Moulu', 'https://cdn.pixabay.com/photo/2013/11/05/23/55/coffee-206142_1280.jpg', 'Thé/Café', '26', '6,5', '250g', 'Grains issus d''Ouganda, du Honduras et du Pérou cultivés par des coopératives et rigoureusement sélectionnés'),
 ('Thé de Ceylan', 'https://cdn.pixabay.com/photo/2016/11/29/12/44/tea-1869594_1280.jpg', 'Thé/Café', '100', '10', '100g', 'Appelé poudre à canon, ce thé de Chine possède en effet des feuilles enroulées sur elles-mêmes. C’est le thé qui est souvent utilisé pour réaliser le thé à la menthe, dans le rituel marocain');
 
+INSERT INTO "recipes" ("title", "image", "duration", "number_person") VALUES
+('Lessive', 'https://cdn.pixabay.com/photo/2016/07/06/06/53/washing-powder-1500058_960_720.jpg', '30min', null),
+('Muesli aux fruits', 'https://cdn.pixabay.com/photo/2018/01/31/21/12/muesli-3121962_1280.jpg', '5min', '1'),
+('Pain courgettes et noix', 'https://cdn.pixabay.com/photo/2018/09/08/10/09/meusli-3662217_1280.jpg', '25min', '4');
+
+INSERT INTO "ingredients" ("recette_id", "item_id", "quantity") VALUES
+('1', '17', '200g'),
+('1', '18', '125g'),
+('1', '19', '50g'),
+('2', '2', '30g'),
+('2', '3', '30g'),
+('2', '10', '25g'),
+('2', '11', '25g'),
+('2', '12', '15g'),
+('3', '4', '250g'),
+('3', '12', '50g'),
+('3', '16', '150g');
+
+INSERT INTO "steps" ("description") VALUES
+('Faites Bouillir 1,5 litre d''eau'),
+('Ajoutez le savon de Marseille en copeaux'),
+('Remuez jusqu''à obtenir un mélange homogène'),
+('Ajoutez l''acide citrique et les cristaux de soude'),
+('Remuez à nouveau et laisser reposer 24h avant utilisation'),
+('Prenez un Grand bol'),
+('Mélangez les flocons d''avoine et les corn flakes (environ la moitié du bol)'),
+('Coupez les abricots secs en dés et incorporez-les avec les framboises'),
+('Ajoutez quelques noix de Grenoble écrasées et un peu de lait'),
+('Votre petit déjeuner est prêt !'),
+('Dans un grand bol, fouetter 2 œufs, une cuillère à soupe de sucre et une d''huile'),
+('Ajoutez 50g de beurre et 1/2 litre d''eau'),
+('Laissez reposer 1/2h. Pendant ce temps, épluchez la courgette et coupez-la en rondelles'),
+('Ajoutez les noix décortiquées et mélanger le tout avec la pâte'),
+('Faites cuire au four traditionnel pendant 1h10 à 220°');
+
+INSERT INTO "recipe_steps" ("recipe_id", "step_id") VALUES
+('1', '1'),
+('1', '2'),
+('1', '3'),
+('1', '4'),
+('1', '5'),
+('2', '6'),
+('2', '7'),
+('2', '8'),
+('2', '9'),
+('2', '10'),
+('3', '11'),
+('3', '12'),
+('3', '13'),
+('3', '14'),
+('3', '15');
+
 COMMIT;

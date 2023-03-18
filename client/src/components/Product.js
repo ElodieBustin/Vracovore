@@ -2,32 +2,78 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 
-function Product({userId, isAuthenticated}){
+function Product({isAuthenticated}){
     const { id } = useParams();
     const [productItem, setProductItem] = useState([]);
+    const [userId, setUserId] = useState('');
+    const [isAdded, setIsAdded] = useState(false);
 
 
     useEffect(() => {
+      getProfile();
+      if(userId){
         async function fetchData() {
-            const productItemResponse = await fetch(`http://localhost:3001/data/product/${id}`);
-            const productItem = await productItemResponse.json();
-            setProductItem(productItem[0]);
-        }
-        fetchData();
-    }, [id]);
+          const productItemResponse = await fetch(`http://localhost:3001/data/product/${id}`);
+          const productItem = await productItemResponse.json();
+          setProductItem(productItem[0]);
+      }
+      fetchData();
+      checkFavorite(id, userId);
+      }
+    }, [id, userId]);
+
+    const getProfile = async () => {
+      try {
+        const res = await fetch("http://localhost:3001/dashboard/", {
+          method: "GET",
+          headers: { jwt_token: localStorage.token }
+        });
+  
+        const parseData = await res.json();
+        setUserId(parseData.id);
+      } catch (err) {
+        console.error(err.message);
+      }
+    };
+
+    const checkFavorite = async (item_id, user_id) => {
+      console.log('je suis userId', typeof item_id)
+      const response = await fetch('http://localhost:3001/data/checkFavorites', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ item_id, user_id })
+      });
+      const checkFavResponse = await response.json();
+      setIsAdded(checkFavResponse);
+      console.log(checkFavResponse);
+    }
+    
 
     const addToFavorites = async (item_id, user_id) => {
-      console.log('id dans add', item_id);
-      console.log('userId dans add', user_id);
+      item_id = parseInt(item_id);
+      console.log('id dans add', typeof item_id);
+      console.log('userId dans add', typeof user_id);
         const response = await fetch('http://localhost:3001/data/addFavorites', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
+          headers:{
+            "Content-Type": "application/json",
+            Accept:"application/json",
+            "Access-control-Allow-origin": "*"
           },
           body: JSON.stringify({ item_id, user_id })
         });
-        await response.json();
+        const checkFavRes = await response.json();
+        setIsAdded(checkFavRes)
+        console.log(checkFavRes);
       };
+
+      const deleteFavorite = async (item_id, user_id) => {
+        item_id = parseInt(item_id);
+        console.log('test delete');
+        setIsAdded(false);
+      }
     
     return (
       <article className="product">
@@ -53,9 +99,9 @@ function Product({userId, isAuthenticated}){
           <p className="product__infos__description--text">{productItem.description}</p> 
       </div>
 
-        {isAuthenticated ? (
-            <button onClick={()=>addToFavorites(id, userId)}>Add to favorite</button>
-        ) : null}
+      {isAuthenticated ? (
+        isAdded ? <button onClick={() => deleteFavorite(id, userId)}>Delete favorite</button> : <button onClick={() => addToFavorites(id, userId)}>Add to favorite</button>
+      ) : null}
     </div>
 
     </article>

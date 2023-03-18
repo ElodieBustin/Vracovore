@@ -1,7 +1,8 @@
 const express = require('express');
 const pool = require('../db');
-
 const router = express.Router();
+const checkFavorites = require('./../middlewares/checkFavorites');
+const cors = require('cors');
 
 router.get('/', async (req, res) => {
   try {
@@ -33,10 +34,12 @@ router.get('/product/:id', async (req, res) => {
   res.json(productItem.rows);
 });
 
-router.post('/addFavorites', async (req, res) => {
+router.post('/addFavorites', cors(), async (req, res) => {
   const { item_id, user_id } = req.body;
-  console.log(user_id);
-  console.log(item_id);
+  console.log('fonction add user_id', user_id);
+  console.log('fonction add item_id', item_id);
+
+  console.log(checkFavorites);
 
     const addToFavorite = await pool.query(
       'INSERT INTO favorite_items (user_id, item_id) VALUES ($1, $2) RETURNING id',
@@ -46,22 +49,25 @@ router.post('/addFavorites', async (req, res) => {
     console.log('je suis bien ajouté', addToFavorite.rows);
 });
 
-router.post('/checkFavorites', async (req, res) => {
-  const { userId, itemId } = parseInt(req.body);
-  const checkFavoriteData = await pool.query("SELECT * FROM favorite_items WHERE user_id = $1 AND item_id = $2", [userId, itemId]);
+router.post('/checkFavorites', cors(), async (req, res) => {
+  const { item_id, user_id } = req.body;
+  console.log('checkFavo item_id',item_id);
+  console.log('checkFavo user_id',user_id);
+  const checkFavoriteData = await pool.query("SELECT * FROM favorite_items WHERE user_id = $1 AND item_id = $2", [user_id, item_id]);
+
+  console.log(checkFavoriteData.rows)
 
   if(checkFavoriteData.rows.length > 0){
-    console.log("Doublon !");
-    return res.status(401).json(true);
+    console.log("Données présentes");
+    return res.json(true);
   } else {
-    console.log("Pas de doublon !");
-    return res.status(200).json(false);
+    console.log("Données manquantes");
+    return res.json(false);
   }
 });
 
 router.get('/getfavorites/:userId', async (req, res) => {
   const userId = req.params.userId;
-  console.log(userId);
   try {
     const favoriteList = await pool.query(
       'SELECT * FROM items INNER JOIN favorite_items ON items.id = favorite_items.item_id WHERE favorite_items.user_id = $1', [userId]

@@ -9,7 +9,11 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 // MIDDLEWARES
-app.use(cors());
+const corsOptions = {
+  origin: true,
+  credentials: true,
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // ROUTES

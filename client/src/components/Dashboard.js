@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 const Dashboard = ({setAuth}) => {
     const [first_name, setName] = useState("");
     const [userId, setUserId] = useState('');
-
     const [favoriteItems, setFavoriteItems] = useState([]);
 
     useEffect(() => {
