@@ -1,0 +1,32 @@
+.dashboard__favContainer{
+    display: flex;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.favoriteCard{
+    width: 300px;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    margin: 1.5rem 0;
+
+    @include breakpoint-up(desktop){
+        margin: 1.5rem;
+    }
+
+    &__title{
+        margin-bottom: 2rem;
+        font-size: 1.8rem;
+    }
+
+    &__imgContainer{
+        
+        >img{
+            width: 100%;
+        }
+    }
+}

@@ -82,7 +82,7 @@ function Product({isAuthenticated}){
         })
         console.log(response);
         console.log('test delete');
-        // setIsAdded(false);
+        setIsAdded(false);
       }
     
     return (
@@ -110,7 +110,7 @@ function Product({isAuthenticated}){
       </div>
 
       {isAuthenticated ? (
-        isAdded ? <button onClick={() => deleteFavorite(id, userId)}>Delete favorite</button> : <button onClick={() => addToFavorites(id, userId)}>Add to favorite</button>
+        isAdded ? <button className="button delete" onClick={() => deleteFavorite(id, userId)}>Delete favorite</button> : <button className="button add" onClick={() => addToFavorites(id, userId)}>Add to favorite</button>
       ) : null}
     </div>
 

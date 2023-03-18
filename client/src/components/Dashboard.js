@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
+import FavoriteCard from './FavoriteCard';
 
 const Dashboard = ({setAuth}) => {
     const [first_name, setName] = useState("");
@@ -57,8 +58,9 @@ const Dashboard = ({setAuth}) => {
         <h1 className='dashboard__title'>Bienvenue sur votre page {first_name}</h1>
         <div className='dashboard__contentFav'>
           Vos produits favoris sont :
-          <div>
-            {favoriteItems.map(favorite => favorite.name)}
+          <div className='dashboard__favContainer'>
+            {favoriteItems.map(favorite => 
+               <FavoriteCard key={favorite.id} favorite={favorite}/>)}
           </div>
         </div>
       
