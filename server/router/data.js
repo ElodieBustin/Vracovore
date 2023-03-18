@@ -66,6 +66,22 @@ router.post('/checkFavorites', cors(), async (req, res) => {
   }
 });
 
+router.delete('/deleteFavorite', cors(), async (req, res) => {
+  const { item_id, user_id } = req.body;
+  console.log('je suis item_id de delete', item_id);
+  console.log('je suis user_id de delete', user_id);
+  console.log('je suis dans router delete');
+
+  try {
+    const deleteFavData = await pool.query("DELETE FROM favorite_items WHERE item_id = $1 AND user_id = $2", [item_id, user_id]);
+    console.log(deleteFavData);
+    console.log('Favori supprimé');
+    res.send('');
+  } catch (error) {
+    console.log('L\'erreur de delete est : ', error.message)
+  }
+})
+
 router.get('/getfavorites/:userId', async (req, res) => {
   const userId = req.params.userId;
   try {

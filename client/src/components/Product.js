@@ -71,8 +71,18 @@ function Product({isAuthenticated}){
 
       const deleteFavorite = async (item_id, user_id) => {
         item_id = parseInt(item_id);
+        const response = await fetch('http://localhost:3001/data/deleteFavorite',{
+          method: 'DELETE',
+          headers:{
+            "Content-Type": "application/json",
+            Accept:"application/json",
+            "Access-control-Allow-origin": "*"
+          },
+          body: JSON.stringify({ item_id, user_id })
+        })
+        console.log(response);
         console.log('test delete');
-        setIsAdded(false);
+        // setIsAdded(false);
       }
     
     return (
