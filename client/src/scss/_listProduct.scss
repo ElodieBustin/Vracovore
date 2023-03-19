@@ -58,7 +58,7 @@
         }
     
         .productsContainer{
-    
+            margin-top: 3rem;
             @include breakpoint-up(desktop){
                 display: flex;
                 flex-wrap: wrap;
@@ -74,6 +74,7 @@
                 border: 1px rgb(206, 206, 206) solid;
                 border-radius: 5%;
                 height: 35rem;
+                margin: 1rem 0;
     
                 @include breakpoint-up(desktop){
                     box-sizing: border-box;

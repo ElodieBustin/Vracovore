@@ -7,6 +7,7 @@ function ListProduct(){
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('');
 
+
     useEffect(() => {
         async function fetchData() {
             const [itemsResponse, categoriesResponse] = await Promise.all([
@@ -21,7 +22,7 @@ function ListProduct(){
         fetchData();
     }, []);
 
-    const handleCategoryClick = (category) => {
+    function handleCategoryClick(category){
         setSelectedCategory(category === selectedCategory ? '' : category);
     }; 
 

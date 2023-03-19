@@ -553,6 +553,9 @@
 .listContainer__mainPage .categoryContainer__list--element:hover {
   cursor: pointer;
 }
+.listContainer__mainPage .productsContainer {
+  margin-top: 3rem;
+}
 @media (min-width: 700px) {
   .listContainer__mainPage .productsContainer {
     display: flex;
@@ -569,6 +572,7 @@
   border: 1px rgb(206, 206, 206) solid;
   border-radius: 5%;
   height: 35rem;
+  margin: 1rem 0;
 }
 @media (min-width: 700px) {
   .listContainer__mainPage .productsContainer .productCard {
