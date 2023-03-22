@@ -13,13 +13,13 @@ function Product({isAuthenticated}){
 
     useEffect(() => {
       getProfile();
-      if(userId){
         async function fetchData() {
           const productItemResponse = await fetch(`http://localhost:3001/data/product/${id}`);
           const productItem = await productItemResponse.json();
           setProductItem(productItem[0]);
       }
       fetchData();
+      if(userId){
       checkFavorite(id, userId);
       }
     }, [id, userId]);
@@ -39,7 +39,6 @@ function Product({isAuthenticated}){
     };
 
     const checkFavorite = async (item_id, user_id) => {
-      console.log('je suis userId', typeof item_id)
       const response = await fetch('http://localhost:3001/data/checkFavorites', {
         method: 'POST',
         headers: {
@@ -49,14 +48,11 @@ function Product({isAuthenticated}){
       });
       const checkFavResponse = await response.json();
       setIsAdded(checkFavResponse);
-      
     }
     
 
     const addToFavorites = async (item_id, user_id) => {
       item_id = parseInt(item_id);
-      console.log('id dans add', typeof item_id);
-      console.log('userId dans add', typeof user_id);
         const response = await fetch('http://localhost:3001/data/addFavorites', {
           method: 'POST',
           headers:{

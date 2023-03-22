@@ -1,4 +1,6 @@
 import {useState} from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = ({setAuth}) => {
   const [inputValues, setInputValues] = useState({
@@ -32,6 +34,7 @@ const Login = ({setAuth}) => {
         setAuth(true);
       } else {
         setAuth(false);
+        toast.error(parseRes);
       }
     } catch (err) {
       console.error(err.message);
@@ -76,6 +79,7 @@ const Login = ({setAuth}) => {
         {/* <p className="forgot-password text-right">
           Forgot <a href="#">password?</a>
         </p> */}
+                <ToastContainer />
       </form>
     )
   }

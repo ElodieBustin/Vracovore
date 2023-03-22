@@ -1,0 +1,83 @@
+.recipe{
+    margin: 3rem 2rem;
+    font-size: 1.5rem;
+
+    @include breakpoint-up(desktop){
+        width: 80%;
+        margin: 3rem auto;
+    }
+
+    &__imgContainer{
+        width: 80%;
+        margin: auto;
+
+        @include breakpoint-up(desktop){
+            width: 50%;
+        }
+
+        >img{
+            display: block;
+            margin: auto;
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0px 3px 5px rgba(0,0,0,0.3);
+        }
+    }
+
+    &__title{
+        font-family: 'Cookie', cursive;
+        font-size: 4em;
+        text-align: center;
+        color: #c45d5c;
+        text-shadow: 1px 1px 0px #eee;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+    }
+
+    &__informations{
+        display: flex;
+        justify-content: space-around;
+        margin-top: 2rem;
+    }
+
+    &__ingredients{
+        margin: 3rem 0;
+
+        &--container{
+            margin-left: 2rem;
+        }
+
+        &--item{
+            list-style: disc;
+            margin:  0.5rem;
+            .itemName{
+                padding: 0.8rem;
+                display: inline-block;
+                background-color: $green;
+            }
+
+            .quantity {
+                margin-left: 1.5rem;
+            }
+            
+        }
+
+    }
+
+    &__steps{
+        &__container{
+            margin-left: 2rem;
+            padding: 1rem 0;
+        }
+
+        &--step{
+            list-style: '-';
+            line-height: 1.8rem;
+            &::before{
+                content: '';
+                margin-right: 0.5rem;
+                
+            }
+        }
+    }
+}

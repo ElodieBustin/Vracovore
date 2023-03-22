@@ -10,6 +10,7 @@ import Homepage from './components/Homepage';
 import ConnectForm from './components/connectForm';
 import Dashboard from './components/Dashboard';
 import Product from './components/Product';
+import Recipe from './components/Recipe';
 
 import './scss/reset.css';
 import './scss/styles.css';
@@ -75,12 +76,13 @@ function App(){
       <Router>
         <Header />
                 <Routes>
-                <Route path="/" element={<Homepage />} />
-                <Route path="/products" element={<ListProduct />} />
-                <Route path="/recettes" element={<ListRecipes />} />
-                <Route path="/login" element={!isAuthenticated ? <ConnectForm setAuth={setAuth} /> : <Navigate to="/dashboard" />} />
-                <Route path="/dashboard" element={<Dashboard setAuth={setAuth} userId={userId} />} />
-                <Route path="/product/:id" element={<Product isAuthenticated={isAuthenticated} />} />
+                  <Route path="/" element={<Homepage />} />
+                  <Route path="/products" element={<ListProduct />} />
+                  <Route path="/recettes" element={<ListRecipes />} />
+                  <Route path="/login" element={!isAuthenticated ? <ConnectForm setAuth={setAuth} /> : <Navigate to="/dashboard" />} />
+                  <Route path="/dashboard" element={<Dashboard setAuth={setAuth} userId={userId} />} />
+                  <Route path="/product/:id" element={<Product isAuthenticated={isAuthenticated} />} />
+                  <Route path='recette/:id' element={<Recipe />}/>
                 </Routes>
         <Footer />
       </Router>
