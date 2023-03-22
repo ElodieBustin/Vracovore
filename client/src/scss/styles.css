@@ -519,6 +519,21 @@
     justify-content: space-between;
   }
 }
+.listContainer__mainPage--searchInput {
+  width: 200px;
+  margin: 2rem auto;
+}
+.listContainer__mainPage--searchInput > input {
+  width: 200px;
+  height: 30px;
+}
+@media (min-width: 700px) {
+  .listContainer__mainPage--searchInput {
+    margin: 0;
+    position: absolute;
+    left: calc(50% - 100px);
+  }
+}
 .listContainer__mainPage .categoryContainer {
   width: 50%;
   height: -moz-fit-content;
@@ -560,7 +575,7 @@
   .listContainer__mainPage .productsContainer {
     display: flex;
     flex-wrap: wrap;
-    margin: 3rem auto;
+    margin: 4rem auto;
     justify-content: center;
   }
 }
