@@ -27,7 +27,7 @@ function ListProduct(){
         setSelectedCategory(category === selectedCategory ? '' : category);
     }; 
 
-    const handleChange = event => {
+    function handleChange(event){
         setSearchTerm(event.target.value);
     };
     
@@ -53,13 +53,16 @@ function ListProduct(){
 
                     <aside className="categoryContainer">
                         <ul className="categoryContainer__list">
-                            <li key="all" className={`categoryContainer__list--element ${!selectedCategory && 'selected'}`} onClick={()=>handleCategoryClick('')}>
+                            <li key="all" className={`categoryContainer__list--element ${!selectedCategory ? 'selected' : ''}`} onClick={()=>handleCategoryClick('')}>
                                 Tous
                             </li>
                             {categories.map(category =>
-                                <li key={category.category} className={`categoryContainer__list--element ${category.category === selectedCategory && 'selected'}`} onClick={() => handleCategoryClick(category.category)}>
+                                <li key={category.category} 
+                                className={`categoryContainer__list--element ${category.category === selectedCategory ? 'selected' : ''}`} 
+                                onClick={() => handleCategoryClick(category.category)}>
                                     {category.category}
                                 </li>
+
                             )}
                         </ul>
                     </aside>

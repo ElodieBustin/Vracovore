@@ -42,7 +42,9 @@ function Product({isAuthenticated}){
       const response = await fetch('http://localhost:3001/data/checkFavorites', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
+          "Accept":"application/json",
+          "Access-control-Allow-origin": "*"
         },
         body: JSON.stringify({ item_id, user_id })
       });
@@ -57,7 +59,7 @@ function Product({isAuthenticated}){
           method: 'POST',
           headers:{
             "Content-Type": "application/json",
-            Accept:"application/json",
+            "Accept":"application/json",
             "Access-control-Allow-origin": "*"
           },
           body: JSON.stringify({ item_id, user_id })
@@ -73,7 +75,7 @@ function Product({isAuthenticated}){
           method: 'DELETE',
           headers:{
             "Content-Type": "application/json",
-            Accept:"application/json",
+            "Accept":"application/json",
             "Access-control-Allow-origin": "*"
           },
           body: JSON.stringify({ item_id, user_id })
@@ -107,7 +109,17 @@ function Product({isAuthenticated}){
       </div>
 
       {isAuthenticated ? (
-        isAdded ? <button className="button delete" onClick={() => deleteFavorite(id, userId)}>Delete favorite <i className="fa-solid fa-heart-crack"></i></button> : <button className="button add" onClick={() => addToFavorites(id, userId)}>Add to favorite <i className="fa-solid fa-heart"></i></button>
+        isAdded ? 
+          <button 
+          className="button delete" 
+          onClick={() => deleteFavorite(id, userId)}> Supprimer de la liste des favoris 
+          <i className="fa-solid fa-heart-crack"></i>
+          </button> : 
+          <button 
+          className="button add" 
+          onClick={() => addToFavorites(id, userId)}>Ajouter à la liste des favoris 
+          <i className="fa-solid fa-heart"></i>
+          </button>
       ) : null}
     </div>
     <ToastContainer />

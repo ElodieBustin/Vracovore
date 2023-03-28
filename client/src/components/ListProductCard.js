@@ -6,7 +6,7 @@ function ListProductCard({item}) {
             <div className="productCard__name">{item.name}</div>
 
             <div className="productCard__imgContainer">
-                <img src={item.image} alt="" />
+                <img src={item.image} alt={item.name} />
             </div>
 
             

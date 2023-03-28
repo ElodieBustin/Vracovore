@@ -496,6 +496,9 @@
 .product .button:hover {
   background-color: #0277a1;
 }
+.product .button > i {
+  margin-left: 1rem;
+}
 
 .listContainer {
   width: 85%;
