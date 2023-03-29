@@ -2,9 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import FavoriteCard from './FavoriteCard';
 
-const Dashboard = ({setAuth}) => {
-    const [first_name, setName] = useState("");
-    const [userId, setUserId] = useState('');
+const Dashboard = ({setAuth, userId, first_name}) => {
     const [favoriteItems, setFavoriteItems] = useState([]);
 
     useEffect(() => {
@@ -21,21 +19,6 @@ const Dashboard = ({setAuth}) => {
         fetchFavoriteItems();
       }
     }, [userId]);
-
-    const getProfile = async () => {
-      try {
-        const res = await fetch("http://localhost:3001/dashboard/", {
-          method: "GET",
-          headers: { jwt_token: localStorage.token }
-        });
-  
-        const parseData = await res.json();
-        setName(parseData.first_name);
-        setUserId(parseData.id);
-      } catch (err) {
-        console.error(err.message);
-      }
-    };
   
     const handleLogout = async () => {
       if (window.confirm('Êtes-vous sûr(e) et certain(e) de vouloir vous déconnecter ? Ce n\'est pas un mauvais clic ? Pas une erreur ? 100% ?')) {
@@ -47,11 +30,8 @@ const Dashboard = ({setAuth}) => {
         }
       }
     };
-
-    useEffect(() => {
-        getProfile();
-      }, [])
     
+
       return (
       <>
       <div className='dashboard'>
@@ -60,7 +40,7 @@ const Dashboard = ({setAuth}) => {
           Vos produits favoris sont :
           <div className='dashboard__favContainer'>
             {favoriteItems.map(favorite => 
-               <FavoriteCard key={favorite.id} favorite={favorite}/>)}
+              <FavoriteCard key={favorite.id} favorite={favorite}/>)}
           </div>
         </div>
       

@@ -20,7 +20,8 @@ function ListRecipies(){
 
     return (
         <>
-        <div className="listRecipies">
+        <h1 className='titleRecipes'>Nos recettes à découvrir</h1>
+        <div className="listRecipes">
             {recipesData.map(recipe =>
                 <ListRecipesCard key={recipe.id} recipeData={recipe} />)
             }

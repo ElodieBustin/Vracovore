@@ -4,15 +4,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-function Product({isAuthenticated}){
+function Product({isAuthenticated, userId}){
     const { id } = useParams();
     const [productItem, setProductItem] = useState([]);
-    const [userId, setUserId] = useState('');
     const [isAdded, setIsAdded] = useState(false);
 
 
     useEffect(() => {
-      getProfile();
         async function fetchData() {
           const productItemResponse = await fetch(`http://localhost:3001/data/product/${id}`);
           const productItem = await productItemResponse.json();
@@ -23,20 +21,6 @@ function Product({isAuthenticated}){
       checkFavorite(id, userId);
       }
     }, [id, userId]);
-
-    const getProfile = async () => {
-      try {
-        const res = await fetch("http://localhost:3001/dashboard/", {
-          method: "GET",
-          headers: { jwt_token: localStorage.token }
-        });
-  
-        const parseData = await res.json();
-        setUserId(parseData.id);
-      } catch (err) {
-        console.error(err.message);
-      }
-    };
 
     const checkFavorite = async (item_id, user_id) => {
       const response = await fetch('http://localhost:3001/data/checkFavorites', {

@@ -1,4 +1,11 @@
-.listRecipies{
+.titleRecipes{
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 3rem 0;
+}
+
+.listRecipes{
     display: flex;
     flex-direction: column;
     margin: 2rem auto;
@@ -14,7 +21,7 @@
         min-height: 50vh;
     }
 
-    .recipiesCard{
+    .recipesCard{
         width: 30rem;
         margin: 1.5rem auto;
 

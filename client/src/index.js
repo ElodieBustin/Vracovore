@@ -18,6 +18,7 @@ import './scss/styles.css';
 function App(){
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userId, setUserId] = useState('');
+  const [first_name, setName] = useState("");
 
   const getProfile = async () => {
     try {
@@ -28,6 +29,7 @@ function App(){
 
       const parseData = await res.json();
       setUserId(parseData.id);
+      setName(parseData.first_name);
     } catch (err) {
       console.error(err.message);
     }
@@ -69,8 +71,6 @@ function App(){
     setIsAuthenticated(boolean);
   };
 
-
-
   return (
     <React.StrictMode>
       <Router>
@@ -80,8 +80,8 @@ function App(){
                   <Route path="/products" element={<ListProduct />} />
                   <Route path="/recettes" element={<ListRecipes />} />
                   <Route path="/login" element={!isAuthenticated ? <ConnectForm setAuth={setAuth} /> : <Navigate to="/dashboard" />} />
-                  <Route path="/dashboard" element={<Dashboard setAuth={setAuth} userId={userId} />} />
-                  <Route path="/product/:id" element={<Product isAuthenticated={isAuthenticated} />} />
+                  <Route path="/dashboard" element={<Dashboard setAuth={setAuth} userId={userId} first_name={first_name} />} />
+                  <Route path="/product/:id" element={<Product isAuthenticated={isAuthenticated} userId={userId} />} />
                   <Route path='recette/:id' element={<Recipe />}/>
                 </Routes>
         <Footer />
